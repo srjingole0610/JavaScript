@@ -387,3 +387,40 @@ let n = '1' + 1;
 n = n - 1;
 console.log(n);
 ////////////////////////////////////
+
+
+////////////////////////////////////
+// Truthy and Falsy Values
+// 5 falsy values: 0, '', undefined, null, NaN
+
+// Check if the boolean value of 0 is falsy and log the result.
+console.log(Boolean(0));
+
+// Check if the boolean value of undefined is falsy and log the result.
+console.log(Boolean(undefined));
+
+// Check if the boolean value of a non-empty string 'Jonas' is truthy and log the result.
+console.log(Boolean('Jonas'));
+
+// Check if the boolean value of an empty object {} is truthy and log the result.
+console.log(Boolean({}));
+
+// Check if the boolean value of an empty string '' is falsy and log the result.
+console.log(Boolean(''));
+
+// Conditional statement based on the truthiness of the money variable.
+const money = 100;
+if (money) {
+  console.log("Don't spend it all ;)");
+} else {
+  console.log('You should get a job!');
+}
+
+// Conditional statement based on the truthiness of the height variable.
+let height = 0;
+if (height) {
+  console.log('YAY! Height is defined');
+} else {
+  console.log('Height is UNDEFINED');
+}
+////////////////////////////////////
