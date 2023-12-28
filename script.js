@@ -41,14 +41,15 @@ let job2 = "teacher";
 // Print the value of the variable 'myFirstJob' to the console.
 console.log(myFirstJob); 
 
+// LECTURE: Values and Variables
+// 1. Declare variables called 'country', 'continent' and 'population' and
+// assign their values according to your own country (population in millions)
+// 2. Log their values to the console
+
+
 let country = 'India';
 let continent = 'Asia';
 let Population = 330000000;
 console.log(country,continent,Population);
-////////////////////////////////////
-
 
 ////////////////////////////////////
-// Data Types
-
-
