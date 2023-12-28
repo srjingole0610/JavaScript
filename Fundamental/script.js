@@ -596,3 +596,28 @@ if (day === 'monday') {
   console.log('Not a valid day!');
 }
 ////////////////////////////////////
+
+
+////////////////////////////////////
+// Statements and Expressions
+// Expressions: Values or combinations of values that produce a result. Examples: 3 + 4, 1991, true && false && !false
+
+// Arithmetic expression: Sum of 3 and 4.
+3 + 4;
+
+// Numeric expression: The year 1991.
+1991;
+
+// Logical expression: Combination of true, false, and the logical NOT operator.
+true && false && !false;
+
+// Conditional statement using an if statement.
+if (23 > 10) {
+  // Declaration statement: Declare a variable 'str' and assign it the value '23 is bigger'.
+  const str = '23 is bigger';
+}
+
+// Template literal expression: Combine strings and expressions to produce a formatted string.
+const me = 'Jonas';
+console.log(`I'm ${2037 - 1991} years old ${me}`);
+////////////////////////////////////
