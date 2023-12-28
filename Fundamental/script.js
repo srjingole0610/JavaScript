@@ -424,3 +424,36 @@ if (height) {
   console.log('Height is UNDEFINED');
 }
 ////////////////////////////////////
+
+
+////////////////////////////////////
+// Equality Operators: == vs. ===
+
+// Declare a variable nyNewAge with the string value '18'.
+const nyNewAge = '18';
+
+// Check strict equality (value and type) with the number 18 using the strict equality operator (===).
+if (nyNewAge === 18) console.log('You just became an adult :D (strict)');
+
+// Check loose equality (value only) with the number 18 using the loose equality operator (==).
+if (nyNewAge == 18) console.log('You just became an adult :D (loose)');
+
+// Prompt the user for their favorite number and convert the input to a number using Number().
+const favourite = Number(prompt("What's your favourite number?"));
+console.log(favourite);
+console.log(typeof favourite);
+
+// Check the value of the favorite number using strict equality and multiple else-if statements.
+if (favourite === 23) {
+  console.log('Cool! 23 is an amazing number!');
+} else if (favourite === 7) {
+  console.log('7 is also a cool number');
+} else if (favourite === 9) {
+  console.log('9 is also a cool number');
+} else {
+  console.log('Number is not 23 or 7 or 9');
+}
+
+// Check if the favorite number is not equal to 23 using the strict inequality operator (!==).
+if (favourite !== 23) console.log('Why not 23?');
+////////////////////////////////////
