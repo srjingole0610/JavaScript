@@ -196,3 +196,19 @@ console.log(isFullAge);
 // Compare birth years and print the result to the console.
 console.log(now - 1991 > now - 2018);
 ////////////////////////////////////
+
+////////////////////////////////////
+// Operator Precedence
+
+// Assign values to variables z and y using chained subtraction.
+// The expression is evaluated from left to right: 25 - 10 - 5.
+// Result: z = y = 10
+let z, y;
+z = y = 25 - 10 - 5;
+console.log(z, y);
+
+// Calculate the average age using the sum of ageSuraj and agePriyanka divided by 2.
+// Operator precedence ensures that the addition is performed before division.
+const averageAge = (ageSuraj + agePriyanka) / 2;
+console.log(ageSuraj, agePriyanka, averageAge);
+////////////////////////////////////
