@@ -41,5 +41,14 @@ let job2 = "teacher";
 // Print the value of the variable 'myFirstJob' to the console.
 console.log(myFirstJob); 
 
+let country = 'India';
+let continent = 'Asia';
+let Population = 330000000;
+console.log(country,continent,Population);
+////////////////////////////////////
+
 
 ////////////////////////////////////
+// Data Types
+
+
