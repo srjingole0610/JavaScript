@@ -127,3 +127,72 @@ lastName = 'Ingole';
 // Print the value of 'lastName' to the console.
 console.log(lastName);
 ////////////////////////////////////
+
+
+////////////////////////////////////
+// Basic Operators
+// Math operators
+
+// Calculate the age of Suraj and Priyanka based on their birth years.
+const ageSuraj = 2023 - 1995;
+const agePriyanka = 2023 - 1996;
+
+// Print the calculated ages to the console.
+console.log(ageSuraj);
+console.log(agePriyanka);
+
+// Print both ages in a single line to the console.
+console.log(ageSuraj, agePriyanka);
+
+// Calculate the ages of Akash and Priya based on the current year.
+const now = 2023;
+const ageAkash = now - 1990;
+const agePriya = now - 1999;
+
+// Print the ages of Akash and Priya to the console.
+console.log(ageAkash, agePriya);
+
+// Perform various mathematical operations and print the results to the console.
+console.log(ageSuraj * 2, ageSuraj / 10, 2 ** 3);
+
+// Concatenate strings to form the full name and print to the console.
+const myFirstName = 'Suraj';
+const myLastName = 'Ingole';
+console.log(myFirstName + myLastName);
+console.log(myFirstName + ' ' + myLastName);
+
+// Assignment operators
+
+// Perform addition and print the result.
+let x = 10 + 5;
+console.log(x);
+
+// Use the compound assignment operator '+=' and print the updated value.
+x += 10;
+console.log(x);
+
+// Use the compound assignment operator '*=' and print the updated value.
+x *= 4;
+console.log(x);
+
+// Increment x by 1 using the increment operator '++' and print the updated value.
+x++;
+console.log(x);
+
+// Decrement x by 1 using the decrement operator '--' and print the updated value.
+x--;
+console.log(x);
+
+// Comparison operators
+
+// Compare ages and print the results to the console.
+console.log(ageSuraj > agePriyanka);
+console.log(ageSuraj > ageAkash);
+
+// Check if Priya is full age (18 or older) and print the result.
+const isFullAge = agePriya >= 18;
+console.log(isFullAge);
+
+// Compare birth years and print the result to the console.
+console.log(now - 1991 > now - 2018);
+////////////////////////////////////
