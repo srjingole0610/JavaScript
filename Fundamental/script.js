@@ -618,6 +618,32 @@ if (23 > 10) {
 }
 
 // Template literal expression: Combine strings and expressions to produce a formatted string.
-const me = 'Jonas';
-console.log(`I'm ${2037 - 1991} years old ${me}`);
+const me = 'Suraj';
+console.log(`I'm ${2037 - 1996} years old ${me}`);
+////////////////////////////////////
+
+
+////////////////////////////////////
+// The Conditional (Ternary) Operator
+// Declare a variable 'ageCheck' with the value 23.
+const ageCheck = 23;
+
+// Ternary operator used for a conditional log statement based on age.
+ageCheck >= 18 ? console.log('I like to drink wine 🍷') : console.log('I like to drink water 💧');
+
+// Ternary operator used to assign a value to the variable 'drink' based on age.
+const drink = ageCheck >= 18 ? 'wine 🍷' : 'water 💧';
+console.log(drink);
+
+// Equivalent if-else statement to assign a value to the variable 'drink2' based on age.
+let drink2;
+if (ageCheck >= 18) {
+  drink2 = 'wine 🍷';
+} else {
+  drink2 = 'water 💧';
+}
+console.log(drink2);
+
+// Ternary operator used within a template literal for a dynamic log statement based on age.
+console.log(`I like to drink ${ageCheck >= 18 ? 'wine 🍷' : 'water 💧'}`);
 ////////////////////////////////////
