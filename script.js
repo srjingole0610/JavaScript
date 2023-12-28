@@ -250,3 +250,35 @@ markHigherBMI = BMIMark > BMIJohn;
 // Print the calculated BMIs and the result of the comparison to the console.
 console.log(BMIMark, BMIJohn, markHigherBMI);
 ////////////////////////////////////
+
+
+////////////////////////////////////
+// Strings and Template Literals
+
+// Declare variables for name, job, birth year, and current year.
+const _firstName = 'Suraj';
+const myNewJob = 'Developer';
+const myBirthYear = 1996;
+const currentYear = 2023;
+
+// Concatenate strings using the traditional method.
+const myDetails = "I'm " + _firstName + ', a ' + (currentYear - myBirthYear) + ' years old ' + myNewJob; 
+console.log(myDetails);
+
+// Use template literals for string interpolation, providing a cleaner and more readable syntax.
+const myNewDetails = `I'm ${_firstName}, a ${currentYear - myBirthYear} years old ${myNewJob}`;
+console.log(myNewDetails);
+
+// Demonstrate a simple template literal without variables.
+console.log(`Just a regular string...`);
+
+// Compare creating a string with multiple lines using traditional backslashes and with template literals.
+console.log('String with \n\
+multiple \n\
+lines');
+
+// Utilize template literals for a string with multiple lines in a more concise manner.
+console.log(`String
+multiple
+lines`);
+////////////////////////////////////
