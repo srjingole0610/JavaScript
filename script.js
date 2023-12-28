@@ -282,3 +282,34 @@ console.log(`String
 multiple
 lines`);
 ////////////////////////////////////
+
+
+////////////////////////////////////
+// Taking Decisions: if / else Statements
+
+// Declare a variable representing a new age and create a boolean indicating if the person is old enough.
+const newAge = 19;
+const isOldEnough = newAge >= 18;
+
+// Use an if/else statement to check if Suraj is old enough to opt for a driving license.
+if (isOldEnough) {
+    console.log('Suraj can opt for a driving license 🚗');
+} else {
+    // If not old enough, calculate the number of years left and display a message.
+    const yearsLeft = 18 - newAge;
+    console.log(`Suraj cannot opt for a driving license. He is too young. Wait another ${yearsLeft} years. 🥲`);
+}
+
+// Declare a variable for a new birth year and determine the century based on a conditional statement.
+const newBirthYear = 1995;
+let century;
+
+if (newBirthYear <= 2000) {
+    century = 20;
+} else {
+    century = 21;
+}
+
+// Print the determined century to the console.
+console.log(century);
+////////////////////////////////////
