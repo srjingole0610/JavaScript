@@ -313,3 +313,44 @@ if (newBirthYear <= 2000) {
 // Print the determined century to the console.
 console.log(century);
 ////////////////////////////////////
+
+
+////////////////////////////////////
+// Coding Challenge #2
+
+/*
+Use the BMI example from Challenge #1, and the code you already wrote, and improve it:
+
+1. Print a nice output to the console, saying who has the higher BMI. The message can be either "Mark's BMI is higher than John's!" or "John's BMI is higher than Mark's!"
+2. Use a template literal to include the BMI values in the outputs. Example: "Mark's BMI (28.3) is higher than John's (23.9)!"
+
+HINT: Use an if/else statement 😉
+
+GOOD LUCK 😀
+*/
+
+// SOLUTION
+// PART 1
+// Declare variables for the new masses and heights of Mark and John.
+const newMassMark = 78;
+const newHeightMark = 1.69;
+const newMassJohn = 92;
+const newHeightJohn = 1.76;
+
+// Calculate the new BMIs for Mark and John.
+const newBMIMark = newMassMark / (newHeightMark ** 2);
+const newBMIJohn = newMassJohn / (newHeightJohn ** 2);
+
+// Determine if Mark has a higher BMI than John.
+const newHigherBMI = newBMIMark > newBMIJohn;
+
+// Part 2
+// Use an if/else statement to print a message about who has the higher BMI, including the BMI values.
+if (newHigherBMI) {
+    // Print a message when Mark has a higher BMI.
+    console.log(`Mark's BMI (${newBMIMark}) is higher than John's (${newBMIJohn})!`);
+} else {
+    // Print a message when John has a higher BMI.
+    console.log(`John's BMI (${newBMIJohn}) is higher than Mark's (${newBMIMark})!`);
+}
+////////////////////////////////////
