@@ -354,3 +354,36 @@ if (newHigherBMI) {
     console.log(`John's BMI (${newBMIJohn}) is higher than Mark's (${newBMIMark})!`);
 }
 ////////////////////////////////////
+
+
+////////////////////////////////////
+// Type Conversion and Coercion
+// Type Conversion
+
+// Convert the string '1991' to a number and log it along with the original string.
+const inputYear = '1991';
+console.log(Number(inputYear), inputYear);
+
+// Perform a numerical operation after converting the string '1991' to a number.
+console.log(Number(inputYear) + 18);
+
+// Attempt to convert a non-numeric string to a number, resulting in NaN.
+console.log(Number('Suraj'));
+console.log(typeof NaN);
+
+// Convert the number 23 to a string and log it along with the original number.
+console.log(String(23), 23);
+
+// Type Coercion
+// Concatenate a string and a number using the '+' operator.
+console.log('I am ' + 23 + ' Years old');
+
+// Perform subtraction and multiplication operations involving strings that represent numbers.
+console.log('23' - '10' - 3);
+console.log('23' * '2');
+
+// Concatenate a string '1' with the number 1, then subtract 1.
+let n = '1' + 1;
+n = n - 1;
+console.log(n);
+////////////////////////////////////
