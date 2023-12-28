@@ -51,5 +51,45 @@ let country = 'India';
 let continent = 'Asia';
 let Population = 330000000;
 console.log(country,continent,Population);
+////////////////////////////////////
 
+
+////////////////////////////////////
+// Data Types
+// Declare a variable 'javascriptIsFun' and assign a boolean value 'true' to it.
+let javascriptIsFun = true;
+console.log(javascriptIsFun);
+
+// Print the data type of the boolean value 'true' to the console.
+console.log(typeof true);
+
+// Print the data type of the string 'Suraj' to the console.
+console.log(typeof 'Suraj');
+
+// Print the data type of the variable 'javascriptIsFun' (boolean) to the console.
+console.log(typeof javascriptIsFun);
+
+// Print the data type of the number '23' to the console.
+console.log(typeof 23);
+
+// Change the value of 'javascriptIsFun' to 23, showcasing dynamic typing in JavaScript.
+javascriptIsFun = 23;
+console.log(typeof javascriptIsFun);
+
+// Declare a variable 'year' without assigning a value.
+let year;
+console.log(year);
+
+// Print the data type of the variable 'year', which is currently undefined.
+console.log(typeof year);
+
+// Assign the value 1996 to the variable 'year'.
+year = 1996;
+console.log(year);
+
+// Print the data type of the variable 'year', which is now a number.
+console.log(typeof year);
+
+// Print the data type of the value 'null' to the console.
+console.log(typeof null);
 ////////////////////////////////////
