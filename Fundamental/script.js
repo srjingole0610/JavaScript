@@ -457,3 +457,40 @@ if (favourite === 23) {
 // Check if the favorite number is not equal to 23 using the strict inequality operator (!==).
 if (favourite !== 23) console.log('Why not 23?');
 ////////////////////////////////////
+
+
+////////////////////////////////////
+// Logical Operators
+// Declare variables indicating whether Suraj has a driver's license and good vision.
+const hasDriversLicense = true; // A
+const hasGoodVision = true; // B
+
+// Log the result of the AND logical operator between hasDriversLicense and hasGoodVision.
+console.log(hasDriversLicense && hasGoodVision);
+
+// Log the result of the OR logical operator between hasDriversLicense and hasGoodVision.
+console.log(hasDriversLicense || hasGoodVision);
+
+// Log the result of the NOT logical operator on hasDriversLicense.
+console.log(!hasDriversLicense);
+
+// Check if Suraj has a driver's license and good vision using the AND logical operator.
+if (hasDriversLicense && hasGoodVision) {
+  console.log('Suraj is able to drive!');
+} else {
+  console.log('Someone else should drive...');
+}
+
+// Declare a variable indicating whether Suraj is tired.
+const isTired = false; // C
+
+// Log the result of the logical expression combining multiple conditions.
+console.log(hasDriversLicense && hasGoodVision && isTired);
+
+// Check if Suraj has a driver's license, good vision, and is not tired using the AND logical operator.
+if (hasDriversLicense && hasGoodVision && !isTired) {
+  console.log('Suraj is able to drive!');
+} else {
+  console.log('Someone else should drive...');
+}
+////////////////////////////////////
