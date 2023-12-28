@@ -549,3 +549,50 @@ if (scoreDolphinsNew > scoreKoalasNew && scoreDolphinsNew >= 100) {
     console.log('No one wins the trophy 😭');
 }
 ////////////////////////////////////
+
+
+////////////////////////////////////
+// The switch Statement
+// Declare a variable 'day' with the value 'friday'.
+const day = 'friday';
+
+// Use a switch statement to perform different actions based on the value of 'day'.
+switch (day) {
+  case 'monday': // Check if 'day' is 'monday'.
+    console.log('Plan course structure');
+    console.log('Go to coding meetup');
+    break;
+  case 'tuesday': // Check if 'day' is 'tuesday'.
+    console.log('Prepare theory videos');
+    break;
+  case 'wednesday':
+  case 'thursday': // Check if 'day' is 'wednesday' or 'thursday'.
+    console.log('Write code examples');
+    break;
+  case 'friday': // Check if 'day' is 'friday'.
+    console.log('Record videos');
+    break;
+  case 'saturday':
+  case 'sunday': // Check if 'day' is 'saturday' or 'sunday'.
+    console.log('Enjoy the weekend :D');
+    break;
+  default: // Default case for an invalid day.
+    console.log('Not a valid day!');
+}
+
+// Equivalent if-else if statement for comparison.
+if (day === 'monday') {
+  console.log('Plan course structure');
+  console.log('Go to coding meetup');
+} else if (day === 'tuesday') {
+  console.log('Prepare theory videos');
+} else if (day === 'wednesday' || day === 'thursday') {
+  console.log('Write code examples');
+} else if (day === 'friday') {
+  console.log('Record videos');
+} else if (day === 'saturday' || day === 'sunday') {
+  console.log('Enjoy the weekend :D');
+} else {
+  console.log('Not a valid day!');
+}
+////////////////////////////////////
