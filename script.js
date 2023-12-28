@@ -93,3 +93,37 @@ console.log(typeof year);
 // Print the data type of the value 'null' to the console.
 console.log(typeof null);
 ////////////////////////////////////
+
+
+////////////////////////////////////
+// let, const, and var
+
+// Declare a variable 'age' using 'let' and assign the value 30 to it.
+let age = 30;
+
+// Modify the value of 'age' to 31, demonstrating that 'let' allows reassignment.
+age = 31;
+
+// Declare a constant variable 'birthYear' using 'const' and assign the value 1991 to it.
+const birthYear = 1991;
+
+// Attempting to reassign 'birthYear' to 1990 will result in an error because it is a constant.
+// Uncommenting the next line will lead to a TypeError.
+// birthYear = 1990;
+
+// Declaring a constant variable 'job' without assigning a value will result in an error.
+// Uncommenting the next line will lead to a SyntaxError.
+// const job;
+
+// Declare a variable 'myJob' using 'var' and assign the string value 'programmer' to it.
+var myJob = 'programmer';
+
+// Modify the value of 'myJob' to 'Full Stack Developer', showcasing 'var' allows reassignment.
+myJob = 'Full Stack Developer';
+
+// Assigning a value to 'lastName' without using 'let', 'const', or 'var' implicitly declares a global variable.
+lastName = 'Ingole';
+
+// Print the value of 'lastName' to the console.
+console.log(lastName);
+////////////////////////////////////
