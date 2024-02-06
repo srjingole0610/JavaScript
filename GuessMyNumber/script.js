@@ -1,10 +1,12 @@
 'use strict';
 
 // Generate a random secret number between 1 and 20
-const secretNumber = Math.trunc(Math.random() * 20) + 1;
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
 
 // Initialize the player's score to 20
 let score = 20;
+// Initialize the player's highscore to 0
+let highScore = 0
 
 // Add an event listener to the 'Check' button
 document.querySelector('.check').addEventListener('click', function() {
@@ -18,10 +20,20 @@ document.querySelector('.check').addEventListener('click', function() {
     // Check if the guess matches the secret number
     else if (guess === secretNumber) {
         document.querySelector('.message').textContent = '🥇 Correct Number! 🥇';
-        // Display the secret number on the web page (for debugging purposes)
+        // Display the secret number on the web page 
         document.querySelector('.number').textContent = secretNumber;
+        // Change the background color of the webpage to a green shade (#60b347) to provide positive feedback 
         document.querySelector('body').style.backgroundColor = '#60b347';
+        // Increase the width of the element with class 'number' to 30rem (30 times the size of a default font),
         document.querySelector('.number').style.width = '30rem'
+
+         // Check if the current score is greater than the existing high score.
+        if (score > highScore) {
+            // Set the high score to the current score.
+            highScore = score;
+             // Update the high score displayed on the webpage to reflect the new high score.
+            document.querySelector('.highscore').textContent = highScore;
+        }
     }
     // Check if the guess is higher than the secret number
     else if (guess > secretNumber) {
@@ -63,12 +75,16 @@ document.querySelector('.check').addEventListener('click', function() {
 document.querySelector('.again').addEventListener('click', function() {
     // Reset the player's score to 20
     score = 20;
+
+    secretNumber = Math.trunc(Math.random() * 20) + 1;
     // Set the message to prompt the player to start guessing
     document.querySelector('.message').textContent = 'Start guessing...';
     // Reset the score displayed on the web page
     document.querySelector('.score').textContent = score;
     // Clear the input field for the player's guess
     document.querySelector('.guess').value = '';
+    // Clear the input field for the player's highscore
+    document.querySelector('.highscore').value = '';
     // Hide the secret number displayed on the web page
     document.querySelector('.number').textContent = '?';
     // Reset the background color of the webpage to default
