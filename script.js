@@ -40,3 +40,13 @@ btnCloseModel.addEventListener('click', closeModal);
 // Add a click event listener to the 'overlay' element.
 // When clicked, the 'closeModal' function will be called.
 overlay.addEventListener('click', closeModal);
+
+
+// Add a 'keydown' event listener to the document object
+document.addEventListener('keydown', function(e) {
+    // Check if the key pressed is 'Escape' and if the modal is currently not hidden
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        // If both conditions are met, call the 'closeModal' function to hide the modal
+        closeModal();
+    }
+});
