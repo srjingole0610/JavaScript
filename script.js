@@ -11,5 +11,32 @@ const btnCloseModel = document.querySelector('.close-modal');
 // Selects all elements in the document with the class 'show-modal' and assigns them to the variable 'btnOpenModel'
 const btnOpenModel = document.querySelectorAll('.show-modal');
 
+const openModal = function(){
+    // Remove the 'hidden' class from the modal element
+    modal.classList.remove('hidden');
+        
+    // Remove the 'hidden' class from the overlay element
+    overlay.classList.remove('hidden');
+}
 
+// Define a function named 'closeModal' that adds the 'hidden' class to the modal and overlay elements
+const closeModal = function() {
+    // Add the 'hidden' class to the modal element
+    modal.classList.add('hidden');
+    // Add the 'hidden' class to the overlay element
+    overlay.classList.add('hidden');
+}
 
+// Loop through each element with the class 'show-modal'
+for (let i = 0; i < btnOpenModel.length; i++) {
+    // Add a click event listener to the current element
+    btnOpenModel[i].addEventListener('click', openModal);
+}
+
+// Add a click event listener to the  'btnCloseModal' element.
+// When clicked, the 'closeModal' function will be called.
+btnCloseModel.addEventListener('click', closeModal);
+
+// Add a click event listener to the 'overlay' element.
+// When clicked, the 'closeModal' function will be called.
+overlay.addEventListener('click', closeModal);
