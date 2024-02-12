@@ -33,6 +33,10 @@ const restaurant = {
 
   orderDelivery:function ({starterIndex,mainIndex,time,address}){
     console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`);
+  },
+
+  orderpasta : function(ing1,ing2,ing3){
+    console.log(`Here is your delicious pasta with ${ing1},${ing2} and ${ing3}`)
   }
 };
 
@@ -71,39 +75,71 @@ const restaurant = {
 // const [i, , , [j, k, l]] = nested;
 // console.log(i, j, k, l);
 
-//Destructuring Objects
+// //Destructuring Objects
 
-const { name, openingHours, closeHours, categories } = restaurant;
-console.log(name, openingHours, categories);
+// const { name, openingHours, closeHours, categories } = restaurant;
+// console.log(name, openingHours, categories);
 
-const {
-  name: restaurantName,
-  openingHours: hours,
-  categories: tags,
-} = restaurant;
-console.log(restaurantName, hours, tags);
+// const {
+//   name: restaurantName,
+//   openingHours: hours,
+//   categories: tags,
+// } = restaurant;
+// console.log(restaurantName, hours, tags);
 
-//default value
-const { menu = [], starterMenu: starters = [] } = restaurant;
-console.log(menu, starters);
+// //default value
+// const { menu = [], starterMenu: starters = [] } = restaurant;
+// console.log(menu, starters);
 
 
-//mutating variables
+// //mutating variables
 
-let a1 = 111;
-let b2 = 999;
+// let a1 = 111;
+// let b2 = 999;
 
-const obj = {a1:23, b2:7, c1:14};
-({a1, b2} = obj);
-console.log(a1,b2);
+// const obj = {a1:23, b2:7, c1:14};
+// ({a1, b2} = obj);
+// console.log(a1,b2);
 
-//nested Object
-const {fri: {open:openTime,close:closeTime}} = openingHours;
-console.log(openTime,closeTime);
+// //nested Object
+// const {fri: {open:openTime,close:closeTime}} = openingHours;
+// console.log(openTime,closeTime);
 
-restaurant.orderDelivery({
-  time : '22:30',
-  address: 'Via Angelo Tavanti 23, Firenze, Italy',
-  mainIndex: 2,
-  starterIndex: 2,
-})
+// restaurant.orderDelivery({
+//   time : '22:30',
+//   address: 'Via Angelo Tavanti 23, Firenze, Italy',
+//   mainIndex: 2,
+//   starterIndex: 2,
+// })
+
+
+//Spread Operators
+const array = [7,8,9];
+const newArray = [5,6, ...array];
+console.log(newArray);
+
+console.log(...newArray);
+
+const newMenu = [...restaurant.mainMenu, 'Gnooci'];
+console.log(newMenu);
+console.log(restaurant.mainMenu);
+
+
+//Shallow Copy
+const mainMenuCopy = [...restaurant.mainMenu,];
+
+//Join Two arrays
+const wholeMenu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(wholeMenu);
+
+const str = 'Restaurant';
+const letters = [...str, ' ', 'S.'];
+console.log(letters);
+
+const ingredients = [prompt('Let\'s make pasta! Ingredient 1?'), prompt('Ingredient 2?'), prompt('Ingredient 3') ];
+restaurant.orderpasta(...ingredients);
+
+//Objects
+
+const newRestraunt = {...restaurant, founder: 'Suraj'};
+console.log(newRestraunt);
