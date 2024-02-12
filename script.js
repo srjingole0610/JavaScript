@@ -213,10 +213,43 @@ const restaurant = {
 // restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'onions');
 
 
-//Null Coalescing Operator
-restaurant.numGuests = 0;
-const guest1 = restaurant.numGuests? restaurant.numGuests : 10;
-console.log(guest1);
+// //Null Coalescing Operator
+// restaurant.numGuests = 0;
+// const guest1 = restaurant.numGuests? restaurant.numGuests : 10;
+// console.log(guest1);
 
-const guestCorrect = restaurant.numGuests ?? 10;
-console.log(guestCorrect);
+// const guestCorrect = restaurant.numGuests ?? 10;
+// console.log(guestCorrect);
+
+//Logical Assignment Operators
+
+const rest1 = {
+  name : '1221',
+  // numGuests :20
+  numGuests :0
+// };
+};
+
+const rest2 = {
+  name : 'SilverSpoon',
+  owner : 'Suraj Ingole'
+};
+
+//OR Assignment Operators
+rest1.numGuests ||=10;
+rest2.numGuests ||=10;
+console.log(rest1);
+console.log(rest2);
+
+//Nullish Assignment Operators
+rest1.numGuests ??=10;
+rest2.numGuests ??=10;
+console.log(rest1);
+console.log(rest2);
+
+
+//AND Assignment Operator
+rest1.owner &&= '<ANONYMOUS>'
+rest2.owner &&= '<ANONYMOUS>'
+console.log(rest1);
+console.log(rest2);
