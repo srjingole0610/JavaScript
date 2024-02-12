@@ -274,77 +274,90 @@ Suppose we get data from a web service about a certain game (below). In this cha
 TEST DATA FOR 6: Use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Then, call the function again with players from game.scored
 GOOD LUCK 😀
 */
-const game = {
-  team1: 'Bayern Munich',
-  team2: 'Borrussia Dortmund',
-  players: [
-    [
-      'Neuer',
-      'Pavard',
-      'Martinez',
-      'Alaba',
-      'Davies',
-      'Kimmich',
-      'Goretzka',
-      'Coman',
-      'Muller',
-      'Gnarby',
-      'Lewandowski',
-    ],
-    [
-      'Burki',
-      'Schulz',
-      'Hummels',
-      'Akanji',
-      'Hakimi',
-      'Weigl',
-      'Witsel',
-      'Hazard',
-      'Brandt',
-      'Sancho',
-      'Gotze',
-    ],
-  ],
-  score: '4:0',
-  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-  date: 'Nov 9th, 2037',
-  odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5,
-  },
-};
+// const game = {
+//   team1: 'Bayern Munich',
+//   team2: 'Borrussia Dortmund',
+//   players: [
+//     [
+//       'Neuer',
+//       'Pavard',
+//       'Martinez',
+//       'Alaba',
+//       'Davies',
+//       'Kimmich',
+//       'Goretzka',
+//       'Coman',
+//       'Muller',
+//       'Gnarby',
+//       'Lewandowski',
+//     ],
+//     [
+//       'Burki',
+//       'Schulz',
+//       'Hummels',
+//       'Akanji',
+//       'Hakimi',
+//       'Weigl',
+//       'Witsel',
+//       'Hazard',
+//       'Brandt',
+//       'Sancho',
+//       'Gotze',
+//     ],
+//   ],
+//   score: '4:0',
+//   scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+//   date: 'Nov 9th, 2037',
+//   odds: {
+//     team1: 1.33,
+//     x: 3.25,
+//     team2: 6.5,
+//   },
+// };
 
-//First
-const [players1,players2] = game.players;
- console.log(players1, players2); 
+// //First
+// const [players1,players2] = game.players;
+//  console.log(players1, players2); 
 
-//Second
-const [gkBM, ...fieldPlayersBM] = players1;
-console.log(gkBM, fieldPlayersBM);
+// //Second
+// const [gkBM, ...fieldPlayersBM] = players1;
+// console.log(gkBM, fieldPlayersBM);
 
-const [gkBD, ...fieldPlayersBD] = players2;
-console.log(gkBD, fieldPlayersBD);
+// const [gkBD, ...fieldPlayersBD] = players2;
+// console.log(gkBD, fieldPlayersBD);
 
-//Third
-const allPlayers = [...players1,...players2];
-console.log(allPlayers);
+// //Third
+// const allPlayers = [...players1,...players2];
+// console.log(allPlayers);
 
-//Fourth
-const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
-console.log(players1Final);
+// //Fourth
+// const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+// console.log(players1Final);
 
-//Fifth
-const {odds: {team1,x,team2}} = game;
-console.log(team1, x, team2);
+// //Fifth
+// const {odds: {team1,x,team2}} = game;
+// console.log(team1, x, team2);
 
-//Sixth
-const printGoals = function(...players){
-  console.log(`${players.length} goals were scored`)
-};
+// //Sixth
+// const printGoals = function(...players){
+//   console.log(`${players.length} goals were scored`)
+// };
 
-printGoals(...game.scored);
+// printGoals(...game.scored);
 
-//Seventh
-team1<team2 && console.log('Team 1 is more likely two win');
-team1>team2 && console.log('Team 2 is more likely two win');
+// //Seventh
+// team1<team2 && console.log('Team 1 is more likely two win');
+// team1>team2 && console.log('Team 2 is more likely two win');
+
+//FOR-OF Loop
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(menu);
+ for(const item of menu) {
+   console.log(item);
+ }
+
+ for (const [i,el] of menu.entries()) {
+   console.log(`${i+1}: ${el}`);
+ }
+
+ console.log([...menu.entries()]);
