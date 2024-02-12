@@ -418,6 +418,99 @@ GOOD LUCK 😀
 
 // }
 
+///////////////////////////////////////
+// Coding Challenge #2
+
+/* 
+Let's continue with our football betting app!
+
+1. Loop over the game.scored array and print each player name to the console, along with the goal number (Example: "Goal 1: Lewandowski")
+2. Use a loop to calculate the average odd and log it to the console (We already studied how to calculate averages, you can go check if you don't remember)
+3. Print the 3 odds to the console, but in a nice formatted way, exaclty like this:
+      Odd of victory Bayern Munich: 1.33
+      Odd of draw: 3.25
+      Odd of victory Borrussia Dortmund: 6.5
+Get the team names directly from the game object, don't hardcode them (except for "draw"). HINT: Note how the odds and the game objects have the same property names 😉
+
+BONUS: Create an object called 'scorers' which contains the names of the players who scored as properties, and the number of goals as the value. In this game, it will look like this:
+      {
+        Gnarby: 1,
+        Hummels: 1,
+        Lewandowski: 2
+      }
+
+GOOD LUCK 😀
+*/
+
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+
+//First
+for (const [i, player] of  game.scored.entries()){
+console.log(`Goals ${i}: ${player}`);}
+
+//Second
+const odds = Object.values(game.odds);
+let average = 0;
+for (const odd of odds) {
+  average += odd;
+}
+average /= odds.length;
+console.log(average);
+
+//Third
+for (const [team, odd] of Object.entries(game.odds)) {
+  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
+  console.log(`Odd of ${teamStr} ${odd}`);
+}
+
+//Bonus
+const scorers = {};
+for (const player of game.scored) {
+  scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+}
+
+///////////////////////////////////////
+
+
 // ///////////////////////////////////////
 // //Sets
 // const orderSet = new Set([
@@ -451,68 +544,68 @@ GOOD LUCK 😀
 
 // ///////////////////////////////////////
 
-///////////////////////////////////////
-//Maps : Fundamentals
-const rest = new Map();
-rest.set('name', 'Le Stone');
-rest.set('location', 'Ravet');
-console.log(rest);
+// ///////////////////////////////////////
+// //Maps : Fundamentals
+// const rest = new Map();
+// rest.set('name', 'Le Stone');
+// rest.set('location', 'Ravet');
+// console.log(rest);
 
-rest
-  .set('category', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
-  .set('open', 11)
-  .set('close', 23)
-  .set(true, 'We are open')
-  .set(false, 'we are closed');
-console.log(rest);
+// rest
+//   .set('category', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+//   .set('open', 11)
+//   .set('close', 23)
+//   .set(true, 'We are open')
+//   .set(false, 'we are closed');
+// console.log(rest);
 
-console.log(rest.get(true));
+// console.log(rest.get(true));
 
-const time = 8;
-console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+// const time = 8;
+// console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
 
-console.log(rest.has('name'));
-// rest.delete('name');
-console.log(rest.size);
-// rest.clear();
-rest.set([1,2], 'Test');
-rest.set(document.querySelector('h1'),'Heading');
-console.log(rest);
-console.log(rest.size);
+// console.log(rest.has('name'));
+// // rest.delete('name');
+// console.log(rest.size);
+// // rest.clear();
+// rest.set([1,2], 'Test');
+// rest.set(document.querySelector('h1'),'Heading');
+// console.log(rest);
+// console.log(rest.size);
 
-console.log(rest.get([1,2]));
+// console.log(rest.get([1,2]));
 
-// Maps: Iteration
-const question = new Map([
-  ['question', 'What is the best programming language in the world?'],
-  [1, 'C'],
-  [2, 'Java'],
-  [3, 'JavaScript'],
-  ['correct', 3],
-  [true, 'Correct 🎉'],
-  [false, 'Try again!'],
-]);
-console.log(question);
+// // Maps: Iteration
+// const question = new Map([
+//   ['question', 'What is the best programming language in the world?'],
+//   [1, 'C'],
+//   [2, 'Java'],
+//   [3, 'JavaScript'],
+//   ['correct', 3],
+//   [true, 'Correct 🎉'],
+//   [false, 'Try again!'],
+// ]);
+// console.log(question);
 
-console.log(Object.entries(openingHours));
-const hoursMap = new Map(Object.entries(openingHours));
-console.log(hoursMap);
+// console.log(Object.entries(openingHours));
+// const hoursMap = new Map(Object.entries(openingHours));
+// console.log(hoursMap);
 
-// Quiz app
-console.log(question.get('question'));
-for (const [key, value] of question) {
-  if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
-}
-const answer = Number(prompt('Your answer'));
-// const answer = 3;
-console.log(answer);
+// // Quiz app
+// console.log(question.get('question'));
+// for (const [key, value] of question) {
+//   if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+// }
+// const answer = Number(prompt('Your answer'));
+// // const answer = 3;
+// console.log(answer);
 
-console.log(question.get(question.get('correct') === answer));
+// console.log(question.get(question.get('correct') === answer));
 
-// Convert map to array
-console.log([...question]);
-// console.log(question.entries());
-console.log([...question.keys()]);
-console.log([...question.values()]);
+// // Convert map to array
+// console.log([...question]);
+// // console.log(question.entries());
+// console.log([...question.keys()]);
+// console.log([...question.values()]);
 
-///////////////////////////////////////
+// ///////////////////////////////////////
