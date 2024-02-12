@@ -4,10 +4,10 @@
 // const flights =
 //   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
-const weekdays =['Sun', 'Mon', 'Tue', 'wed', 'Thu', 'Fri', 'Sat'];
+const weekdays = ['Sun', 'Mon', 'Tue', 'wed', 'Thu', 'Fri', 'Sat'];
 
-const  openingHours = {
-  [weekdays[3]]:{
+const openingHours = {
+  [weekdays[3]]: {
     open: 8,
     close: 22,
   },
@@ -51,10 +51,10 @@ const restaurant = {
     );
   },
 
-  orderPizza(mainIng, ...otherIng){
+  orderPizza(mainIng, ...otherIng) {
     console.log(mainIng);
     console.log(otherIng);
-  }
+  },
 };
 
 // //Desctructing Arrays
@@ -190,7 +190,6 @@ const restaurant = {
 // restaurant.orderPizza('mushrooms', 'onions', 'olives','spinach');
 // restaurant.orderPizza('mushrooms');
 
-
 // //Short Circuiting (||)
 // console.log(3 || 'Suraj');
 // console.log('' || 'Suraj');
@@ -219,7 +218,6 @@ const restaurant = {
 // }
 
 // restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'onions');
-
 
 // //Null Coalescing Operator
 // restaurant.numGuests = 0;
@@ -255,13 +253,11 @@ const restaurant = {
 // console.log(rest1);
 // console.log(rest2);
 
-
 // //AND Assignment Operator
 // rest1.owner &&= '<ANONYMOUS>'
 // rest2.owner &&= '<ANONYMOUS>'
 // console.log(rest1);
 // console.log(rest2);
-
 
 ///////////////////////////////////////
 // Coding Challenge #1
@@ -325,7 +321,7 @@ GOOD LUCK 😀
 
 // //First
 // const [players1,players2] = game.players;
-//  console.log(players1, players2); 
+//  console.log(players1, players2);
 
 // //Second
 // const [gkBM, ...fieldPlayersBM] = players1;
@@ -370,12 +366,10 @@ GOOD LUCK 😀
 
 //  console.log([...menu.entries()]);
 
-
 ///////////////////////////////////////
 // //Enhanced Object Literals
 // console.log(restaurant);
 // console.log(openingHours);
-
 
 // ///////////////////////////////////////
 // //Optional Chaining
@@ -397,30 +391,62 @@ GOOD LUCK 😀
 // const users = [{name: 'John', email: 'john@example.com'}];
 // console.log(users[0]?.name ?? 'User Array empty');
 
+// ///////////////////////////////////////
+
+// //Looping Objects
+// const properties = Object.keys(openingHours)
+// console.log(properties);
+
+// let openStr = (`We are open on ${properties.length} days: `);
+
+// const days =['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+// for(const day of properties){
+//   openStr += `${day}, `;
+// }
+// console.log(openStr);
+
+// //Property Values
+// const values = Object.values(openingHours);
+// console.log(values);
+
+// //Property Entries
+// const entries = Object.entries(openingHours);
+// console.log(entries);
+
+// for(const [key,{open, close}] of entries) {
+//   console.log(`On ${key}, We open at ${open} and close at ${close}`);
+
+// }
 
 ///////////////////////////////////////
+//Sets
+const orderSet = new Set([
+  'Pasta',
+  'Pizza',
+  'Pizza', 
+  'Risotto', 
+  'Pasta']);
 
-//Looping Objects
-const properties = Object.keys(openingHours)
-console.log(properties);
+console.log(orderSet);
 
-let openStr = (`We are open on ${properties.length} days: `);
+console.log(new Set('Jonas'));
+console.log(new Set());
+console.log(orderSet.size);
+console.log(orderSet.has('Pizza'));
+console.log(orderSet.has('bread'));
+orderSet.add('Garlic Bread');
+orderSet.add('Garlic Bread');
+console.log(orderSet);
+orderSet.delete('Risotto');
+console.log(orderSet);
 
-const days =['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
-for(const day of properties){
-  openStr += `${day}, `;
+for (const order of orderSet){
+  console.log(order);
 }
-console.log(openStr);
 
-//Property Values
-const values = Object.values(openingHours);
-console.log(values);
+//RT Example
+const staff = ['Waiter','Chef', 'Waiter', 'Manager', 'Chef','Waiter'];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
 
-//Property Entries
-const entries = Object.entries(openingHours);
-console.log(entries);
-
-for(const [key,{open, close}] of entries) {
-  console.log(`On ${key}, We open at ${open} and close at ${close}`);
-
-}
+///////////////////////////////////////
