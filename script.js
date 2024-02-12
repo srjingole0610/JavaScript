@@ -183,31 +183,40 @@ const restaurant = {
 // restaurant.orderPizza('mushrooms');
 
 
-//Short Circuiting (||)
-console.log(3 || 'Suraj');
-console.log('' || 'Suraj');
-console.log(true || 0);
-console.log(undefined || null);
+// //Short Circuiting (||)
+// console.log(3 || 'Suraj');
+// console.log('' || 'Suraj');
+// console.log(true || 0);
+// console.log(undefined || null);
 
-console.log(undefined || 0 || 'Suraj'|| 23);
+// console.log(undefined || 0 || 'Suraj'|| 23);
 
+// restaurant.numGuests = 0;
+// const guest1 = restaurant.numGuests? restaurant.numGuests : 10;
+// console.log(guest1);
+
+// const guest2 = restaurant.numGuests || 10;
+// console.log(guest2);
+
+// //Short Circuiting (&&)
+// console.log(3 && 'Suraj');
+// console.log('' && 'Suraj');
+// console.log(true && 0);
+// console.log(undefined && null);
+
+// console.log(undefined && 0 && 'Suraj' && 23);
+
+// if(restaurant.orderPizza){
+//   restaurant.orderPizza('mushrooms', 'onions', 'olives','spinach');
+// }
+
+// restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'onions');
+
+
+//Null Coalescing Operator
 restaurant.numGuests = 0;
 const guest1 = restaurant.numGuests? restaurant.numGuests : 10;
 console.log(guest1);
 
-const guest2 = restaurant.numGuests || 10;
-console.log(guest2);
-
-//Short Circuiting (&&)
-console.log(3 && 'Suraj');
-console.log('' && 'Suraj');
-console.log(true && 0);
-console.log(undefined && null);
-
-console.log(undefined && 0 && 'Suraj' && 23);
-
-if(restaurant.orderPizza){
-  restaurant.orderPizza('mushrooms', 'onions', 'olives','spinach');
-}
-
-restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'onions');
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
