@@ -377,22 +377,50 @@ GOOD LUCK 😀
 // console.log(openingHours);
 
 
+// ///////////////////////////////////////
+// //Optional Chaining
+// console.log(restaurant.openingHours.mon?.open);
+// console.log(restaurant.openingHours?.mon?.open);
+
+// const days =['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+// for(const day of days){
+//   // console.log(day);
+//   const open = restaurant.openingHours[day]?.open ?? 'closed';
+//   console.log(`On ${day}, we open at ${open}`);
+// }
+
+// //Optional Chaining on Methods
+// console.log(restaurant.order?.(0,1) ?? 'Methods not Exists');
+// console.log(restaurant.orderRisotto?.(0,1) ?? 'Methods not Exists');
+
+// //Arrays
+// const users = [{name: 'John', email: 'john@example.com'}];
+// console.log(users[0]?.name ?? 'User Array empty');
+
+
 ///////////////////////////////////////
-//Optional Chaining
-console.log(restaurant.openingHours.mon?.open);
-console.log(restaurant.openingHours?.mon?.open);
+
+//Looping Objects
+const properties = Object.keys(openingHours)
+console.log(properties);
+
+let openStr = (`We are open on ${properties.length} days: `);
 
 const days =['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
-for(const day of days){
-  // console.log(day);
-  const open = restaurant.openingHours[day]?.open ?? 'closed';
-  console.log(`On ${day}, we open at ${open}`);
+for(const day of properties){
+  openStr += `${day}, `;
 }
+console.log(openStr);
 
-//Optional Chaining on Methoda
-console.log(restaurant.order?.(0,1) ?? 'Methods not Exists');
-console.log(restaurant.orderRisotto?.(0,1) ?? 'Methods not Exists');
+//Property Values
+const values = Object.values(openingHours);
+console.log(values);
 
-//Arrays
-const users = [{name: 'John', email: 'john@example.com'}];
-console.log(users[0]?.name ?? 'User Array empty');
+//Property Entries
+const entries = Object.entries(openingHours);
+console.log(entries);
+
+for(const [key,{open, close}] of entries) {
+  console.log(`On ${key}, We open at ${open} and close at ${close}`);
+
+}
