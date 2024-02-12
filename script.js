@@ -31,15 +31,23 @@ const restaurant = {
     },
   },
 
-  orderDelivery:function ({starterIndex,mainIndex,time,address}){
-    console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`);
+  orderDelivery: function ({ starterIndex, mainIndex, time, address }) {
+    console.log(
+      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
   },
 
-  orderpasta : function(ing1,ing2,ing3){
-    console.log(`Here is your delicious pasta with ${ing1},${ing2} and ${ing3}`)
+  orderpasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1},${ing2} and ${ing3}`
+    );
+  },
+
+  orderPizza : function(mainIng, ...otherIng){
+    console.log(mainIng);
+    console.log(otherIng);
   }
 };
-
 
 // //Desctructing Arrays
 // const arr = [2, 3, 5];
@@ -91,7 +99,6 @@ const restaurant = {
 // const { menu = [], starterMenu: starters = [] } = restaurant;
 // console.log(menu, starters);
 
-
 // //mutating variables
 
 // let a1 = 111;
@@ -112,34 +119,65 @@ const restaurant = {
 //   starterIndex: 2,
 // })
 
+// //Spread Operators
+// const array = [7,8,9];
+// const newArray = [5,6, ...array];
+// console.log(newArray);
 
-//Spread Operators
-const array = [7,8,9];
-const newArray = [5,6, ...array];
-console.log(newArray);
+// console.log(...newArray);
 
-console.log(...newArray);
+// const newMenu = [...restaurant.mainMenu, 'Gnooci'];
+// console.log(newMenu);
+// console.log(restaurant.mainMenu);
 
-const newMenu = [...restaurant.mainMenu, 'Gnooci'];
-console.log(newMenu);
-console.log(restaurant.mainMenu);
+// //Shallow Copy
+// const mainMenuCopy = [...restaurant.mainMenu,];
 
+// //Join Two arrays
+// const wholeMenu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+// console.log(wholeMenu);
 
-//Shallow Copy
-const mainMenuCopy = [...restaurant.mainMenu,];
+// const str = 'Restaurant';
+// const letters = [...str, ' ', 'S.'];
+// console.log(letters);
 
-//Join Two arrays
-const wholeMenu = [...restaurant.mainMenu, ...restaurant.starterMenu];
-console.log(wholeMenu);
+// const ingredients = [prompt('Let\'s make pasta! Ingredient 1?'), prompt('Ingredient 2?'), prompt('Ingredient 3') ];
+// restaurant.orderpasta(...ingredients);
 
-const str = 'Restaurant';
-const letters = [...str, ' ', 'S.'];
-console.log(letters);
+// //Objects
 
-const ingredients = [prompt('Let\'s make pasta! Ingredient 1?'), prompt('Ingredient 2?'), prompt('Ingredient 3') ];
-restaurant.orderpasta(...ingredients);
+// const newRestaurant = {...restaurant, founder: 'Suraj'};
+// console.log(newRestaurant);
+
+//REST Parameters and Patterns
+const [a, b, ...others] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+console.log(a, b, others);
+
+const [pizza, , Risotto, ...otherFoods] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+
+console.log(pizza, Risotto, otherFoods);
 
 //Objects
+const {sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
 
-const newRestraunt = {...restaurant, founder: 'Suraj'};
-console.log(newRestraunt);
+const add = function (...numbers){
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  console.log(sum);
+}
+
+add(2,3);
+add (5,3,7,2);
+add (8,2,5,3,2,1,4);
+
+const X = [23,5,7];
+add(...X);
+
+restaurant.orderPizza('mushrooms', 'onions', 'olives','spinach');
+restaurant.orderPizza('mushrooms');
