@@ -418,35 +418,101 @@ GOOD LUCK 😀
 
 // }
 
+// ///////////////////////////////////////
+// //Sets
+// const orderSet = new Set([
+//   'Pasta',
+//   'Pizza',
+//   'Pizza',
+//   'Risotto',
+//   'Pasta']);
+
+// console.log(orderSet);
+
+// console.log(new Set('Jonas'));
+// console.log(new Set());
+// console.log(orderSet.size);
+// console.log(orderSet.has('Pizza'));
+// console.log(orderSet.has('bread'));
+// orderSet.add('Garlic Bread');
+// orderSet.add('Garlic Bread');
+// console.log(orderSet);
+// orderSet.delete('Risotto');
+// console.log(orderSet);
+
+// for (const order of orderSet){
+//   console.log(order);
+// }
+
+// //RT Example
+// const staff = ['Waiter','Chef', 'Waiter', 'Manager', 'Chef','Waiter'];
+// const staffUnique = [...new Set(staff)];
+// console.log(staffUnique);
+
+// ///////////////////////////////////////
+
 ///////////////////////////////////////
-//Sets
-const orderSet = new Set([
-  'Pasta',
-  'Pizza',
-  'Pizza', 
-  'Risotto', 
-  'Pasta']);
+//Maps : Fundamentals
+const rest = new Map();
+rest.set('name', 'Le Stone');
+rest.set('location', 'Ravet');
+console.log(rest);
 
-console.log(orderSet);
+rest
+  .set('category', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'We are open')
+  .set(false, 'we are closed');
+console.log(rest);
 
-console.log(new Set('Jonas'));
-console.log(new Set());
-console.log(orderSet.size);
-console.log(orderSet.has('Pizza'));
-console.log(orderSet.has('bread'));
-orderSet.add('Garlic Bread');
-orderSet.add('Garlic Bread');
-console.log(orderSet);
-orderSet.delete('Risotto');
-console.log(orderSet);
+console.log(rest.get(true));
 
-for (const order of orderSet){
-  console.log(order);
+const time = 8;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+
+console.log(rest.has('name'));
+// rest.delete('name');
+console.log(rest.size);
+// rest.clear();
+rest.set([1,2], 'Test');
+rest.set(document.querySelector('h1'),'Heading');
+console.log(rest);
+console.log(rest.size);
+
+console.log(rest.get([1,2]));
+
+// Maps: Iteration
+const question = new Map([
+  ['question', 'What is the best programming language in the world?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'JavaScript'],
+  ['correct', 3],
+  [true, 'Correct 🎉'],
+  [false, 'Try again!'],
+]);
+console.log(question);
+
+console.log(Object.entries(openingHours));
+const hoursMap = new Map(Object.entries(openingHours));
+console.log(hoursMap);
+
+// Quiz app
+console.log(question.get('question'));
+for (const [key, value] of question) {
+  if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
 }
+const answer = Number(prompt('Your answer'));
+// const answer = 3;
+console.log(answer);
 
-//RT Example
-const staff = ['Waiter','Chef', 'Waiter', 'Manager', 'Chef','Waiter'];
-const staffUnique = [...new Set(staff)];
-console.log(staffUnique);
+console.log(question.get(question.get('correct') === answer));
+
+// Convert map to array
+console.log([...question]);
+// console.log(question.entries());
+console.log([...question.keys()]);
+console.log([...question.values()]);
 
 ///////////////////////////////////////
