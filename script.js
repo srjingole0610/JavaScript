@@ -630,51 +630,173 @@
 
 // ///////////////////////////////////////
 
-////////////////////////////////////////////////////////////////
-//Immediately Invoke Function Expression(IIFE)
+// ////////////////////////////////////////////////////////////////
+// //Immediately Invoke Function Expression(IIFE)
+// /*
+//     An Immediately Invoked Function Expression (IIFE) is a JavaScript design pattern that allows you to execute a function immediately after it's defined. It's wrapped in parentheses to turn the function declaration into a function expression, followed by an immediate invocation using additional parentheses.
+//         (function() {
+//         // Code to be executed immediately
+//         console.log("This is an IIFE");
+//     })();
+//     In this example:
+//     We have a function expression enclosed within parentheses (function() { ... }).
+//     The function is immediately invoked by adding () at the end: (function() { ... })().
+//     Any code inside the function is executed immediately.
+
+
+//     Real-Time Scenario:
+//     Consider a scenario where you want to create a private scope to avoid polluting the global namespace while defining variables or functions.
+//     (function() {
+//     var privateVariable = 'This is private';
+
+//     function privateFunction() {
+//         console.log("This is a private function");
+//     }
+
+//     // Code inside the IIFE has access to privateVariable and privateFunction
+//     privateFunction();
+//     })();
+
+//     // privateVariable and privateFunction are not accessible from the global scope
+//     console.log(privateVariable); // Output: Error: privateVariable is not defined
+//     privateFunction(); // Output: Error: privateFunction is not defined
+//     In this scenario:
+//     We use an IIFE to create a private scope where we define variables and functions.
+//     Variables and functions defined inside the IIFE are not accessible from outside the function scope, thus preventing namespace pollution.
+//     This pattern is commonly used in libraries and modules to encapsulate code and avoid conflicts with other scripts.
+
+//     IIFEs are also used to create closures, manage variable scope, and initialize code modules in JavaScript applications. They provide a clean and efficient way to execute code immediately and isolate it from the global scope.
+// */
+
+// const runOnce = function (){
+//     console.log('This will never run again');
+// }
+// runOnce();
+
+// (function (){
+//     console.log('This will never run again');
+// })();
+
+// (() => console.log('This will never run again'))();
+
+///////////////////////////////////////
+// Closures
+
 /*
-    An Immediately Invoked Function Expression (IIFE) is a JavaScript design pattern that allows you to execute a function immediately after it's defined. It's wrapped in parentheses to turn the function declaration into a function expression, followed by an immediate invocation using additional parentheses.
-        (function() {
-        // Code to be executed immediately
-        console.log("This is an IIFE");
-    })();
-    In this example:
-    We have a function expression enclosed within parentheses (function() { ... }).
-    The function is immediately invoked by adding () at the end: (function() { ... })().
-    Any code inside the function is executed immediately.
+    Closures are a way to create a function that can access variables that are defined outside of the function.
+    Closures are useful when you need to access variables that are defined outside of the function.
+    For example, if you need to access a variable that is defined outside of the function, you can create a closure to access the variable.
 
+    In JavaScript, a closure is a combination of a function and the lexical environment within which that function was declared. Closures allow functions to retain access to variables from their containing scope even after the parent function has finished executing.
+    function outerFunction() {
+    let outerVariable = 'I am from outer function';
 
-    Real-Time Scenario:
-    Consider a scenario where you want to create a private scope to avoid polluting the global namespace while defining variables or functions.
-    (function() {
-    var privateVariable = 'This is private';
-
-    function privateFunction() {
-        console.log("This is a private function");
+    function innerFunction() {
+        console.log(outerVariable); // Accessing outerVariable from the outer scope
     }
 
-    // Code inside the IIFE has access to privateVariable and privateFunction
-    privateFunction();
-    })();
+    return innerFunction; // Returning innerFunction, which forms a closure
+    }
 
-    // privateVariable and privateFunction are not accessible from the global scope
-    console.log(privateVariable); // Output: Error: privateVariable is not defined
-    privateFunction(); // Output: Error: privateFunction is not defined
+    const closure = outerFunction();
+    closure(); // Output: I am from outer function
+    In this example:
+    outerFunction defines an inner function innerFunction that accesses a variable outerVariable declared in its lexical scope.
+    outerFunction returns innerFunction, creating a closure where innerFunction retains access to outerVariable even after outerFunction has finished executing.
+    When closure is invoked, it still has access to outerVariable and can log its value.
+
+    Real-Time Scenario:
+    Consider a scenario where you want to create a counter function that maintains its state even after multiple invocations
+    function createCounter() {
+    let count = 0;
+
+    function increment() {
+        count++;
+        console.log(`Count: ${count}`);
+    }
+
+    function decrement() {
+        count--;
+        console.log(`Count: ${count}`);
+    }
+
+    return {
+        increment: increment,
+        decrement: decrement
+    };
+    }
+
+    const counter = createCounter();
+    counter.increment(); // Output: Count: 1
+    counter.increment(); // Output: Count: 2
+    counter.decrement(); // Output: Count: 1
     In this scenario:
-    We use an IIFE to create a private scope where we define variables and functions.
-    Variables and functions defined inside the IIFE are not accessible from outside the function scope, thus preventing namespace pollution.
-    This pattern is commonly used in libraries and modules to encapsulate code and avoid conflicts with other scripts.
+    createCounter creates a closure where the count variable is accessible to the increment and decrement functions.
+    The returned object from createCounter contains references to the increment and decrement functions, forming a closure.
+    Each time increment or decrement is called, the count variable is updated and retains its state across multiple function calls.
 
-    IIFEs are also used to create closures, manage variable scope, and initialize code modules in JavaScript applications. They provide a clean and efficient way to execute code immediately and isolate it from the global scope.
+    Closures are widely used in JavaScript for data privacy, encapsulation, and creating modules. They allow functions to access and manipulate variables from their lexical scope, even after the scope has been destroyed, providing a powerful mechanism for managing state and creating reusable code components.
 */
 
-const runOnce = function (){
-    console.log('This will never run again');
-}
-runOnce();
+// Example 1
+const secureBooking = function () {
+    let passengerCount = 0;
+  
+    return function () {
+      passengerCount++;
+      console.log(`${passengerCount} passengers`);
+    };
+  };
+  
+  const booker = secureBooking();
+  
+  booker();
+  booker();
+  booker();
+  
+  console.dir(booker);
 
-(function (){
-    console.log('This will never run again');
-})();
+// More Closure Examples
+// Example 1
+let f;
 
-(() => console.log('This will never run again'))();
+const g = function () {
+  const a = 23;
+  f = function () {
+    console.log(a * 2);
+  };
+};
+
+const h = function () {
+  const b = 777;
+  f = function () {
+    console.log(b * 2);
+  };
+};
+
+g();
+f();
+console.dir(f);
+
+// Re-assigning f function
+h();
+f();
+console.dir(f);
+
+// Example 2
+const boardPassengers = function (n, wait) {
+  const perGroup = n / 3;
+
+  setTimeout(function () {
+    console.log(`We are now boarding all ${n} passengers`);
+    console.log(`There are 3 groups, each with ${perGroup} passengers`);
+  }, wait * 1000);
+
+  console.log(`Will start boarding in ${wait} seconds`);
+};
+
+const perGroup = 1000;
+boardPassengers(180, 3);
+
+
+///////////////////////////////////////
