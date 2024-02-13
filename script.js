@@ -564,68 +564,117 @@
 
 // ////////////////////////////////////////////////
 
-///////////////////////////////////////
-// Coding Challenge #1
+// ///////////////////////////////////////
+// // Coding Challenge #1
 
-/* 
-Let's build a simple poll app!
+// /* 
+// Let's build a simple poll app!
 
-A poll has a question, an array of options from which people can choose, and an array with the number of replies for each option. This data is stored in the starter object below.
+// A poll has a question, an array of options from which people can choose, and an array with the number of replies for each option. This data is stored in the starter object below.
 
-Here are your tasks:
+// Here are your tasks:
 
-1. Create a method called 'registerNewAnswer' on the 'poll' object. The method does 2 things:
-  1.1. Display a prompt window for the user to input the number of the selected option. The prompt should look like this:
-        What is your favorite programming language?
-        0: JavaScript
-        1: Python
-        2: Rust
-        3: C++
-        (Write option number)
+// 1. Create a method called 'registerNewAnswer' on the 'poll' object. The method does 2 things:
+//   1.1. Display a prompt window for the user to input the number of the selected option. The prompt should look like this:
+//         What is your favorite programming language?
+//         0: JavaScript
+//         1: Python
+//         2: Rust
+//         3: C++
+//         (Write option number)
   
-  1.2. Based on the input number, update the answers array. For example, if the option is 3, increase the value AT POSITION 3 of the array by 1. Make sure to check if the input is a number and if the number makes sense (e.g answer 52 wouldn't make sense, right?)
-2. Call this method whenever the user clicks the "Answer poll" button.
-3. Create a method 'displayResults' which displays the poll results. The method takes a string as an input (called 'type'), which can be either 'string' or 'array'. If type is 'array', simply display the results array as it is, using console.log(). This should be the default option. If type is 'string', display a string like "Poll results are 13, 2, 4, 1". 
-4. Run the 'displayResults' method at the end of each 'registerNewAnswer' method call.
+//   1.2. Based on the input number, update the answers array. For example, if the option is 3, increase the value AT POSITION 3 of the array by 1. Make sure to check if the input is a number and if the number makes sense (e.g answer 52 wouldn't make sense, right?)
+// 2. Call this method whenever the user clicks the "Answer poll" button.
+// 3. Create a method 'displayResults' which displays the poll results. The method takes a string as an input (called 'type'), which can be either 'string' or 'array'. If type is 'array', simply display the results array as it is, using console.log(). This should be the default option. If type is 'string', display a string like "Poll results are 13, 2, 4, 1". 
+// 4. Run the 'displayResults' method at the end of each 'registerNewAnswer' method call.
 
-HINT: Use many of the tools you learned about in this and the last section 😉
+// HINT: Use many of the tools you learned about in this and the last section 😉
 
-BONUS: Use the 'displayResults' method to display the 2 arrays in the test data. Use both the 'array' and the 'string' option. Do NOT put the arrays in the poll object! So what shoud the this keyword look like in this situation?
+// BONUS: Use the 'displayResults' method to display the 2 arrays in the test data. Use both the 'array' and the 'string' option. Do NOT put the arrays in the poll object! So what shoud the this keyword look like in this situation?
 
-BONUS TEST DATA 1: [5, 2, 3]
-BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
+// BONUS TEST DATA 1: [5, 2, 3]
+// BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
 
-GOOD LUCK 😀
+// GOOD LUCK 😀
+// */
+
+// const poll = {
+//   question: 'What is your favorite programming language?',
+//   options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+//   // This generates [0, 0, 0, 0]. More in the next section 😃
+//   answers: new Array(4).fill(0),
+
+//   registerNewAnswer: function () {
+//     const answers = prompt(
+//       `${this.question}\n${this.options.join('\n')}\n(Write Option Number)`
+//     );
+//     if (!isNaN(answers) && answers < this.answers.length) {
+//       this.answers[answers] += 1;
+//       this.displayResults();
+//       this.displayResults('string');
+//     }
+//   },
+//   displayResults(type ='array') {
+//     if (type === 'array') {
+//       console.log(this.answers);
+//     } else if (type ==='string') {
+//       console.log(`Poll results are ${this.answers.join(', ')}`);
+//     }
+//   },
+// };
+
+// document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll));
+// poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
+// poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
+// poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
+
+// ///////////////////////////////////////
+
+////////////////////////////////////////////////////////////////
+//Immediately Invoke Function Expression(IIFE)
+/*
+    An Immediately Invoked Function Expression (IIFE) is a JavaScript design pattern that allows you to execute a function immediately after it's defined. It's wrapped in parentheses to turn the function declaration into a function expression, followed by an immediate invocation using additional parentheses.
+        (function() {
+        // Code to be executed immediately
+        console.log("This is an IIFE");
+    })();
+    In this example:
+    We have a function expression enclosed within parentheses (function() { ... }).
+    The function is immediately invoked by adding () at the end: (function() { ... })().
+    Any code inside the function is executed immediately.
+
+
+    Real-Time Scenario:
+    Consider a scenario where you want to create a private scope to avoid polluting the global namespace while defining variables or functions.
+    (function() {
+    var privateVariable = 'This is private';
+
+    function privateFunction() {
+        console.log("This is a private function");
+    }
+
+    // Code inside the IIFE has access to privateVariable and privateFunction
+    privateFunction();
+    })();
+
+    // privateVariable and privateFunction are not accessible from the global scope
+    console.log(privateVariable); // Output: Error: privateVariable is not defined
+    privateFunction(); // Output: Error: privateFunction is not defined
+    In this scenario:
+    We use an IIFE to create a private scope where we define variables and functions.
+    Variables and functions defined inside the IIFE are not accessible from outside the function scope, thus preventing namespace pollution.
+    This pattern is commonly used in libraries and modules to encapsulate code and avoid conflicts with other scripts.
+
+    IIFEs are also used to create closures, manage variable scope, and initialize code modules in JavaScript applications. They provide a clean and efficient way to execute code immediately and isolate it from the global scope.
 */
 
-const poll = {
-  question: 'What is your favorite programming language?',
-  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
-  // This generates [0, 0, 0, 0]. More in the next section 😃
-  answers: new Array(4).fill(0),
+const runOnce = function (){
+    console.log('This will never run again');
+}
+runOnce();
 
-  registerNewAnswer: function () {
-    const answers = prompt(
-      `${this.question}\n${this.options.join('\n')}\n(Write Option Number)`
-    );
-    if (!isNaN(answers) && answers < this.answers.length) {
-      this.answers[answers] += 1;
-      this.displayResults();
-      this.displayResults('string');
-    }
-  },
-  displayResults(type ='array') {
-    if (type === 'array') {
-      console.log(this.answers);
-    } else if (type ==='string') {
-      console.log(`Poll results are ${this.answers.join(', ')}`);
-    }
-  },
-};
+(function (){
+    console.log('This will never run again');
+})();
 
-document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll));
-poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
-poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
-poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
-
-///////////////////////////////////////
+(() => console.log('This will never run again'))();
