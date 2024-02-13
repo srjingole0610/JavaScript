@@ -1,7 +1,42 @@
 'use strict';
 
-// const bookings = [];
+////////////////////////////////
 // // Default Parameters
+/*
+    In JavaScript, default parameters allow you to initialize function parameters with default values if no argument or an undefined value is passed during the function call. Default parameters provide flexibility and allow functions to handle a variety of scenarios without explicitly checking for undefined or missing arguments.
+
+    function greet(name = 'Guest') {
+    console.log(`Hello, ${name}!`);
+    }
+
+    greet(); // Output: Hello, Guest!
+    greet('John'); // Output: Hello, John!
+    In the example above:
+
+    The greet function has a default parameter name set to 'Guest'.
+    If no argument is passed during the function call, or if undefined is passed, the default value 'Guest' is used.
+    If an argument is provided during the function call, it overrides the default value.
+
+
+    Real-Time Scenario:
+    Consider a scenario where you have a function to create a user profile. You want to provide default values for some of the user's attributes if they are not provided.
+    function createUserProfile(name, age = 18, email = 'example@example.com') {
+    console.log('User Profile:');
+    console.log('Name:', name);
+    console.log('Age:', age);
+    console.log('Email:', email);
+    }
+
+    createUserProfile('John');
+    In this scenario:
+
+    The function createUserProfile takes three parameters: name, age, and email.
+    If age and email are not provided during the function call, they default to 18 and 'example@example.com' respectively.
+    If only name is provided during the function call, the default values for age and email are used.
+
+    Default parameters help simplify function definitions and make the code more concise by providing sensible defaults for function arguments. They are especially useful when defining functions that are likely to be called with missing or undefined arguments in certain scenarios.
+*/
+// const bookings = [];
 // const createBooking = function(flightNum, numPassengers=1,price =100 * numPassengers){
 
 //     // //ES5
@@ -15,7 +50,7 @@
 //     console.log(booking);
 //     bookings.push(booking);
 // }
- 
+
 // createBooking('LH123');
 // createBooking('LH123',5,700);
 // createBooking('LH123',3,400);
@@ -23,9 +58,44 @@
 // createBooking('LH123',5);
 // createBooking('LH123', undefined,1000);
 
-
 // ////////////////////////////////////////////////////////////////
 // //Value vs Reference
+
+/*
+    Passing by Value:
+    When you pass a primitive data type (such as numbers, strings, or booleans) to a function, it's passed by value. This means a copy of the actual value is passed to the function, and any modifications made to the parameter inside the function do not affect the original variable. 
+    function increment(num) {
+    num++;
+    console.log("Inside function:", num);
+    }
+
+    let count = 10;
+    increment(count);
+    console.log("Outside function:", count);
+    In this example:
+    count is a variable holding a primitive value (a number).
+    When count is passed to the increment function, a copy of its value (10) is passed.
+    Inside the function, num is incremented, but this change doesn't affect the original count variable.
+
+
+    Passing by Reference:
+    When you pass an object (including arrays and functions) to a function, it's passed by reference. This means the memory address of the object is passed to the function, not a copy of the object itself. Therefore, any changes made to the object inside the function will reflect in the original object.
+
+    function addProperty(obj) {
+    obj.newProperty = "Hello";
+    console.log("Inside function:", obj);
+    }
+
+    let person = { name: "John" };
+    addProperty(person);
+    console.log("Outside function:", person);
+
+    In this example:
+    person is an object.
+    When person is passed to the addProperty function, it's passed by reference.
+    Inside the function, a new property newProperty is added to the person object. This change reflects outside the function as well.
+
+*/
 
 // const flight = 'LH234';
 // const suraj = {
@@ -38,7 +108,7 @@
 // const checkIn = function(flightNum,passenger){
 //     flightNum = 'LH999';
 //     passenger.name = 'Mr. ' + passenger.name;
-    
+
 //     if(passenger.passport === 245678935){
 //         alert('Check in')
 //     } else {
@@ -59,7 +129,6 @@
 // console.log(suraj);
 
 // ////////////////////////////////////////////////////////////////
-
 
 // ////////////////////////////////////////////////////////////////
 // //First Class Functions and Higher Order Functions
@@ -94,7 +163,6 @@
 
 // const evenNumbers = numbers.filter(isEven);
 // console.log(evenNumbers); // Output: [2, 4]
-
 
 // /*
 // Higher-Order Functions:
@@ -206,29 +274,30 @@ processData is the callback function that processes the fetched data once it's r
 
 Callback functions are extensively used in JavaScript for handling asynchronous operations such as AJAX requests, file I/O, event handling, and more. They allow for non-blocking execution and enable better handling of asynchronous tasks in JavaScript applications.
 */
-const oneWord = function (str){
-    return str.replace(/ /g, '').toLowerCase();
-}
 
-const upperFirstWord = function (str){
-    const [firstWord, ...otherWords] = str.split(' ');
-    return [firstWord.toUpperCase(), ...otherWords].join(' ');
-}
+const oneWord = function (str) {
+  return str.replace(/ /g, '').toLowerCase();
+};
+
+const upperFirstWord = function (str) {
+  const [firstWord, ...otherWords] = str.split(' ');
+  return [firstWord.toUpperCase(), ...otherWords].join(' ');
+};
 
 //Higher-order functions
-const transformer = function (str,fn){
-    console.log(`Original String: ${str}`);
-    console.log(`Transformed String: ${fn(str)}`);
-    console.log(`Transformed By: ${fn.name}`);
-}
+const transformer = function (str, fn) {
+  console.log(`Original String: ${str}`);
+  console.log(`Transformed String: ${fn(str)}`);
+  console.log(`Transformed By: ${fn.name}`);
+};
 
 transformer('JavaScript is the best!', upperFirstWord);
 transformer('JavaScript is the best!', oneWord);
 
-const high5 = function (){
-    console.log('👋');
-}
+const high5 = function () {
+  console.log('👋');
+};
 
-document.body.addEventListener('click',high5);
+document.body.addEventListener('click', high5);
 
-[2,4,7].forEach(high5);
+[2, 4, 7].forEach(high5);
