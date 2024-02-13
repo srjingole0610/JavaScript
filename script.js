@@ -107,3 +107,14 @@ arr = ['a', 'b', 'c', 'd', 'e', 'f'];
 console.log(arr.join(' - ')); 
 
 /////////////////////////////////////////////////
+
+/////////////////////////////////////////////////
+// New At Method
+const arr4 = [23,11,64];
+console.log(arr4[0]);
+console.log(arr4.at(0));
+
+console.log(arr4[arr4.length - 1]);
+console.log(arr4.slice(-1)[0]);
+console.log(arr4.at(-1));
+
