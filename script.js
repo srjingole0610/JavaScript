@@ -421,7 +421,7 @@ GOOD LUCK 😀
 // ///////////////////////////////////////
 // // Coding Challenge #2
 
-// /* 
+// /*
 // Let's continue with our football betting app!
 
 // 1. Loop over the game.scored array and print each player name to the console, along with the goal number (Example: "Goal 1: Lewandowski")
@@ -509,7 +509,6 @@ GOOD LUCK 😀
 // }
 
 // ///////////////////////////////////////
-
 
 // ///////////////////////////////////////
 // //Sets
@@ -610,49 +609,193 @@ GOOD LUCK 😀
 
 // ///////////////////////////////////////
 
+// ///////////////////////////////////////
+// // Coding Challenge #3
 
-///////////////////////////////////////
-// Coding Challenge #3
+// /*
+// Let's continue with our football betting app! This time, we have a map with a log of the events that happened during the game. The values are the events themselves, and the keys are the minutes in which each event happened (a football game has 90 minutes plus some extra time).
 
-/* 
-Let's continue with our football betting app! This time, we have a map with a log of the events that happened during the game. The values are the events themselves, and the keys are the minutes in which each event happened (a football game has 90 minutes plus some extra time).
+// 1. Create an array 'events' of the different game events that happened (no duplicates)
+// 2. After the game has finished, is was found that the yellow card from minute 64 was unfair. So remove this event from the game events log.
+// 3. Print the following string to the console: "An event happened, on average, every 9 minutes" (keep in mind that a game has 90 minutes)
+// 4. Loop over the events and log them to the console, marking whether it's in the first half or second half (after 45 min) of the game, like this:
+//       [FIRST HALF] 17: ⚽️ GOAL
 
-1. Create an array 'events' of the different game events that happened (no duplicates)
-2. After the game has finished, is was found that the yellow card from minute 64 was unfair. So remove this event from the game events log.
-3. Print the following string to the console: "An event happened, on average, every 9 minutes" (keep in mind that a game has 90 minutes)
-4. Loop over the events and log them to the console, marking whether it's in the first half or second half (after 45 min) of the game, like this:
-      [FIRST HALF] 17: ⚽️ GOAL
+// GOOD LUCK 😀
+// */
 
-GOOD LUCK 😀
-*/
+// const gameEvents = new Map([
+//   [17, '⚽️ GOAL'],
+//   [36, '🔁 Substitution'],
+//   [47, '⚽️ GOAL'],
+//   [61, '🔁 Substitution'],
+//   [64, '🔶 Yellow card'],
+//   [69, '🔴 Red card'],
+//   [70, '🔁 Substitution'],
+//   [72, '🔁 Substitution'],
+//   [76, '⚽️ GOAL'],
+//   [80, '⚽️ GOAL'],
+//   [92, '🔶 Yellow card'],
+// ]);
 
-const gameEvents = new Map([
-  [17, '⚽️ GOAL'],
-  [36, '🔁 Substitution'],
-  [47, '⚽️ GOAL'],
-  [61, '🔁 Substitution'],
-  [64, '🔶 Yellow card'],
-  [69, '🔴 Red card'],
-  [70, '🔁 Substitution'],
-  [72, '🔁 Substitution'],
-  [76, '⚽️ GOAL'],
-  [80, '⚽️ GOAL'],
-  [92, '🔶 Yellow card'],
-]);
+// //1.
+// const events = [new Set(gameEvents.values())];
+// console.log(events);
 
-//1.
-const events = [new Set(gameEvents.values())];
-console.log(events);
+// //2.
+// gameEvents.delete(64);
+// console.log(gameEvents);
 
-//2.
-gameEvents.delete(64);
-console.log(gameEvents);
+// //3.
+// console.log(`An event happened, on average, every ${90 / gameEvents.size}  minutes`);
 
-//3.
-console.log(`An event happened, on average, every ${90 / gameEvents.size}  minutes`);
+// //4.
+// for (const [minute, event] of gameEvents) {
+//   const half =  minute<=45 ? 'FIRST' : 'SECOND';
+//   console.log(`[${half} HALF] ${minute}: ${event}`);
+// }
 
-//4.
-for (const [minute, event] of gameEvents) {
-  const half =  minute<=45 ? 'FIRST' : 'SECOND';
-  console.log(`[${half} HALF] ${minute}: ${event}`);
+////////////////////////////////
+//Strings
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+console.log('B737'[0]);
+console.log(airline.length);
+
+//IndexOf and LastIndexOf
+console.log(airline.indexOf('r'));
+console.log(airline.lastIndexOf('r'));
+console.log(airline.indexOf('Portugal'));
+console.log(airline.indexOf('portugal'));
+
+//Slice
+console.log(airline.slice(4));
+console.log(airline.slice(4, 7).length);
+console.log(airline.slice(0, airline.indexOf(' ')));
+console.log(airline.slice(airline.lastIndexOf(' ') + 1));
+console.log(airline.slice(-2));
+console.log(airline.slice(1, -1));
+
+//check middle seat
+const checkMiddleseat = function (seat) {
+  //B and E are middle seat
+  const seats = seat.slice(-1);
+  if (seats === 'B' || seats === 'E') {
+    console.log('You got the middle seat');
+  } else {
+    console.log('You got lucky🍀');
+  }
+};
+
+checkMiddleseat('11B');
+checkMiddleseat('31C');
+checkMiddleseat('15E');
+checkMiddleseat('1A');
+
+//UpperCase and LowerCase
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+//Fix Capitalization
+const passenger = 'jOnAS';
+const passengerName = passenger.toLowerCase();
+const passengerCorrectName =
+  passengerName[0].toUpperCase() + passengerName.slice(1);
+console.log(passengerCorrectName);
+
+//Comparing Emails
+const emailAddress = 'suraj.ingole@gmail.com';
+const loginEmail = '   Suraj.ingole@Gmail.com \n';
+// const lowercaseEmail = loginEmail.toLowerCase();
+// const trimmedEmail = lowercaseEmail.trim();
+// console.log(trimmedEmail);
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+console.log(emailAddress === normalizedEmail);
+
+//Replacing(replace and ReplaceAll)
+const priceGB = '288,97£';
+const priceUS = priceGB.replace('£', '$').replace(',', '.');
+console.log(priceUS);
+const announcements =
+  'All passengers come to boarding door 23. Boarding door 23!';
+console.log(announcements.replaceAll('door', 'gate'));
+console.log(announcements.replace(/door/g, 'gate'));
+
+//Booleans
+const plane1 = 'AirBus A320neo';
+console.log(plane1.includes('A320'));
+console.log(plane1.includes('Boeing'));
+console.log(plane1.startsWith('Air'));
+console.log(plane1.endsWith('neo'));
+if (plane1.startsWith('AirBus') && plane1.endsWith('neo')) {
+  console.log('Part of the NEW AirBus family');
 }
+
+// Practice exercise
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase();
+
+  if (baggage.includes('knife') || baggage.includes('gun')) {
+    console.log('You are NOT allowed on board');
+  } else {
+    console.log('Welcome aboard!');
+  }
+};
+
+checkBaggage('I have a laptop, some Food and a pocket Knife');
+checkBaggage('Socks and camera');
+checkBaggage('Got some snacks and a gun for protection');
+
+//SPLIT
+console.log('a+very+nice+string'.split('+'));
+console.log('Suraj Ashok Ingole'.split(' '));
+
+const [first, last] = 'Suraj Ingole'.split(' ');
+console.log(first, last);
+
+//JOIN
+const newName = ['Mr.', first, last.toUpperCase()].join(' ');
+console.log(newName);
+
+const capitalizeName = function (name) {
+  const names = name.split(' ');
+  const upperNames = [];
+  for (const word of names) {
+    upperNames.push(word[0].toUpperCase() + word.slice(1));
+  }
+  console.log(upperNames.join(' '));
+};
+capitalizeName('suraj ingole');
+capitalizeName('priyanka ingole');
+
+//Padding
+const messages = 'Go to gate 23!';
+console.log(messages.padStart(25, '+').padEnd(35,'+'));
+
+const maskCreditCard = function(number){
+  const str = number + '';
+  const last = str.slice(-4);
+  return last.padStart(str.length, '*');
+}
+console.log(maskCreditCard(1234567890123423));
+console.log(maskCreditCard(1234567890123459));  
+console.log(maskCreditCard(1234567890123756));
+
+// Repeat
+const message2 = 'Bad weather... All Departures Delayed... ';
+console.log(message2.repeat(5));
+
+const planesInLine = function (n) {
+  console.log(`There are ${n} planes in line ${'🛩'.repeat(n)}`);
+};
+planesInLine(5);
+planesInLine(3);
+planesInLine(12);
+
+
+////////////////////////////////
