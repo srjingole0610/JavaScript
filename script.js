@@ -300,66 +300,186 @@
 
 // [2, 4, 7].forEach(high5);
 
+// // ////////////////////////////////////////////////////////////////
+// //Functions Returning Functions
+
+// /*
+//     In JavaScript, functions can return not only traditional data types like numbers or strings but also other functions. When a function returns another function, it's known as a function returning a function, and it enables powerful techniques such as closures and higher-order functions.
+//     function greetMaker(greeting) {
+//     return function(name) {
+//         console.log(`${greeting}, ${name}!`);
+//     };
+//     }
+
+//     const greetHello = greetMaker('Hello');
+//     const greetGoodbye = greetMaker('Goodbye');
+
+//     greetHello('John'); // Output: Hello, John!
+//     greetGoodbye('Jane'); // Output: Goodbye, Jane!
+//     In this example:
+//     The greetMaker function takes a greeting parameter and returns another function.
+//     The returned function takes a name parameter and logs the greeting along with the name.
+//     greetHello and greetGoodbye are functions returned by greetMaker, each initialized with a different greeting.
+
+//     Real-Time Scenario:
+//     Consider a scenario where you want to create various discount calculators based on different conditions, such as membership status, purchase history, or seasonal promotions.
+//     function discountCalculator(discountPercentage) {
+//     return function(amount) {
+//         const discountAmount = (amount * discountPercentage) / 100;
+//         return amount - discountAmount;
+//     };
+//     }
+
+//     const regularCustomerDiscount = discountCalculator(10);
+//     const premiumCustomerDiscount = discountCalculator(20);
+
+//     const regularBillAmount = regularCustomerDiscount(100); // Regular customer gets 10% off
+//     console.log("Regular Bill Amount:", regularBillAmount);
+
+//     const premiumBillAmount = premiumCustomerDiscount(100); // Premium customer gets 20% off
+//     console.log("Premium Bill Amount:", premiumBillAmount);
+
+//     In this scenario:
+//     The discountCalculator function returns a function that calculates the discounted amount based on the provided discount percentage.
+//     regularCustomerDiscount and premiumCustomerDiscount are functions returned by discountCalculator, each with a different discount percentage.
+//     You can then use these functions to calculate the discounted bill amount for regular and premium customers.
+// */
+
+// const greet = function (greetings) {
+//   return function (name) {
+//     console.log(`${greetings} ${name}`);
+//   };
+// };
+
+// const greetHey = greet('Hey');
+// greetHey('Suraj');
+// greetHey('Priyanka');
+// greetHey('Yash');
+
+// greet('Hello')('Suraj');
+
+// //Challenge
+// const greetArr = greetingss => name => console.log(`${greetingss} ${name}`);
+// greetArr('Hello')('Suraj');
 // ////////////////////////////////////////////////////////////////
-//Functions Returning Functions
+
+////////////////////////////////////////////////
+//Call and Apply Methods
 
 /*
-    In JavaScript, functions can return not only traditional data types like numbers or strings but also other functions. When a function returns another function, it's known as a function returning a function, and it enables powerful techniques such as closures and higher-order functions.
-    function greetMaker(greeting) {
-    return function(name) {
-        console.log(`${greeting}, ${name}!`);
-    };
+    In JavaScript, both the call() and apply() methods are used to invoke a function with a specified context (the value of this) and arguments. They are similar but differ in how they accept arguments.
+
+    call() Method:
+    The call() method calls a function with a given this value and arguments provided individually.
+    const person = {
+    fullName: function(city, country) {
+        return this.firstName + ' ' + this.lastName + ', ' + city + ', ' + country;
     }
+    };
 
-    const greetHello = greetMaker('Hello');
-    const greetGoodbye = greetMaker('Goodbye');
+    const person1 = {
+    firstName: 'John',
+    lastName: 'Doe'
+    };
 
-    greetHello('John'); // Output: Hello, John!
-    greetGoodbye('Jane'); // Output: Goodbye, Jane!
-    In this example:
-    The greetMaker function takes a greeting parameter and returns another function.
-    The returned function takes a name parameter and logs the greeting along with the name.
-    greetHello and greetGoodbye are functions returned by greetMaker, each initialized with a different greeting.
+    const person2 = {
+    firstName: 'Jane',
+    lastName: 'Doe'
+    };
+
+    console.log(person.fullName.call(person1, 'New York', 'USA')); // Output: John Doe, New York, USA
+    console.log(person.fullName.call(person2, 'London', 'UK')); // Output: Jane Doe, London, UK
+    In the example above:
+    We have a person object with a fullName method.
+    The call() method is used to invoke the fullName method with different contexts (person1 and person2) and arguments (city and country).
+
+    apply() Method:
+    The apply() method is similar to call(), but it accepts arguments as an array.
+    const person = {
+    fullName: function(city, country) {
+        return this.firstName + ' ' + this.lastName + ', ' + city + ', ' + country;
+    }
+    };
+
+    const person1 = {
+    firstName: 'John',
+    lastName: 'Doe'
+    };
+
+    const person2 = {
+    firstName: 'Jane',
+    lastName: 'Doe'
+    };
+
+    console.log(person.fullName.apply(person1, ['New York', 'USA'])); // Output: John Doe, New York, USA
+    console.log(person.fullName.apply(person2, ['London', 'UK'])); // Output: Jane Doe, London, UK
 
 
     Real-Time Scenario:
-    Consider a scenario where you want to create various discount calculators based on different conditions, such as membership status, purchase history, or seasonal promotions.
-    function discountCalculator(discountPercentage) {
-    return function(amount) {
-        const discountAmount = (amount * discountPercentage) / 100;
-        return amount - discountAmount;
-    };
+    A common real-time scenario for using call() and apply() methods is in the context of inheritance and method borrowing.
+    Consider a scenario where you have a base object with a method, and you want to reuse that method in another object:
+    const baseObject = {
+    greet: function() {
+        return 'Hello, ' + this.name;
     }
+}   ;
 
-    const regularCustomerDiscount = discountCalculator(10);
-    const premiumCustomerDiscount = discountCalculator(20);
+    const person1 = {
+    name: 'John'
+    };
 
-    const regularBillAmount = regularCustomerDiscount(100); // Regular customer gets 10% off
-    console.log("Regular Bill Amount:", regularBillAmount);
+    const person2 = {
+    name: 'Jane'
+    };
 
-    const premiumBillAmount = premiumCustomerDiscount(100); // Premium customer gets 20% off
-    console.log("Premium Bill Amount:", premiumBillAmount);
+    // Using call to borrow the method from baseObject
+    console.log(baseObject.greet.call(person1)); // Output: Hello, John
+    console.log(baseObject.greet.call(person2)); // Output: Hello, Jane
 
-    In this scenario:
-    The discountCalculator function returns a function that calculates the discounted amount based on the provided discount percentage.
-    regularCustomerDiscount and premiumCustomerDiscount are functions returned by discountCalculator, each with a different discount percentage.
-    You can then use these functions to calculate the discounted bill amount for regular and premium customers.
 */
-
-const greet = function (greetings) {
-  return function (name) {
-    console.log(`${greetings} ${name}`);
-  };
+const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+    );
+    this.bookings.push({ flight:`${this.iataCode}${flightNum}`, name });
+  },
 };
 
-const greetHey = greet('Hey');
-greetHey('Suraj');
-greetHey('Priyanka');
-greetHey('Yash');
+lufthansa.book(239, 'Suraj Ingole');
+lufthansa.book(635, 'John Harry');
+console.log(lufthansa);
 
-greet('Hello')('Suraj');
+const eurowings ={
+    airline: 'Eurowings',
+    iataCode: 'EW',
+    bookings: [],
+};
 
-//Challenge
-const greetArr = greetingss => name => console.log(`${greetingss} ${name}`);
-greetArr('Hello')('Suraj');
-// ////////////////////////////////////////////////////////////////
+const book = lufthansa.book;
+// //Does not support
+// book(23, 'Sarah Williams');
+book.call(eurowings,23,'Sarah Williams');
+console.log(eurowings);
+book.call(lufthansa,243,'Nicolas Smith');
+console.log(lufthansa);
+
+const swiss ={
+    airline: 'Swiss Air Lines',
+    iataCode: 'LX',
+    bookings: [],
+}
+
+book.call(swiss,583, 'Mary Cooper');
+console.log(swiss);
+
+
+const flightData = [583, 'George Cooper'];
+book.apply(swiss,flightData);
+console.log(swiss);
+
+
+////////////////////////////////////////////////
