@@ -71,50 +71,75 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// /////////////////////////////////////////////////
+
+// let arr = ['a', 'b', 'c', 'd', 'e', 'f'];
+
+// //Slice()
+// console.log(arr.slice(2));
+// console.log(arr.slice(2,4));
+// console.log(arr.slice(2,-1));
+// console.log(arr.slice(1,-2));
+// console.log(arr.slice());  //Shallow Copying
+
+// //Splice
+// // console.log(arr.splice(2));
+// arr.splice(-1);
+// arr.splice(1,2);
+// console.log(arr); //mutate the original array
+
+// //reverse
+// arr = ['a', 'b', 'c', 'd', 'e', 'f'];
+// const arr2 = ['j', 'i', 'h','g'];
+// console.log(arr2.reverse());
+// console.log(arr2); // mutate the original array
+
+// //Concat
+// arr = ['a', 'b', 'c', 'd', 'e', 'f'];
+// const arr3 = ['g', 'h', 'i', 'j'];
+// console.log(arr.concat(arr3));
+// console.log(arr3);
+
+// //Join
+// arr = ['a', 'b', 'c', 'd', 'e', 'f'];
+// console.log(arr.join(' - '));
+
+// /////////////////////////////////////////////////
+
+// /////////////////////////////////////////////////
+// // New At Method
+// const arr4 = [23,11,64];
+// console.log(arr4[0]);
+// console.log(arr4.at(0));
+
+// console.log(arr4[arr4.length - 1]);
+// console.log(arr4.slice(-1)[0]);
+// console.log(arr4.at(-1));
+
+// ////////////////////////////////////
+
+// /////////////////////////////////////////////////
+//forEach
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-/////////////////////////////////////////////////
+// //for of loop
+// for (const mov of movements) {
+//   if(mov>0){
+//     console.log(`You Deposited: ${mov}`);
+//   }
+//   else{
+//     console.log(`You Withdrew: ${mov}`);
+//   }
+// }
 
-let arr = ['a', 'b', 'c', 'd', 'e', 'f'];
+movements.forEach(function (mov, index, array) {
+  if (mov > 0) {
+    console.log(`Movement ${index + 1}: You Deposited: ${mov}`);
+  } else {
+    console.log(`Movement ${index + 1}: You Withdrew: ${Math.abs(mov)}`);
+  }
+});
 
-//Slice()
-console.log(arr.slice(2));
-console.log(arr.slice(2,4));
-console.log(arr.slice(2,-1));
-console.log(arr.slice(1,-2));
-console.log(arr.slice());  //Shallow Copying
-
-//Splice
-// console.log(arr.splice(2));
-arr.splice(-1);
-arr.splice(1,2);
-console.log(arr); //mutate the original array
-
-//reverse
-arr = ['a', 'b', 'c', 'd', 'e', 'f'];
-const arr2 = ['j', 'i', 'h','g'];
-console.log(arr2.reverse());
-console.log(arr2); // mutate the original array
-
-//Concat
-arr = ['a', 'b', 'c', 'd', 'e', 'f'];
-const arr3 = ['g', 'h', 'i', 'j'];
-console.log(arr.concat(arr3));
-console.log(arr3); 
-
-//Join
-arr = ['a', 'b', 'c', 'd', 'e', 'f'];
-console.log(arr.join(' - ')); 
-
-/////////////////////////////////////////////////
-
-/////////////////////////////////////////////////
-// New At Method
-const arr4 = [23,11,64];
-console.log(arr4[0]);
-console.log(arr4.at(0));
-
-console.log(arr4[arr4.length - 1]);
-console.log(arr4.slice(-1)[0]);
-console.log(arr4.at(-1));
-
+// /////////////////////////////////////////////////
