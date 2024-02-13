@@ -363,80 +363,80 @@
 // greetArr('Hello')('Suraj');
 // ////////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////
-//Call and Apply Methods
+// ////////////////////////////////////////////////
+// //Call and Apply Methods
 
-/*
-    In JavaScript, both the call() and apply() methods are used to invoke a function with a specified context (the value of this) and arguments. They are similar but differ in how they accept arguments.
+// /*
+//     In JavaScript, both the call() and apply() methods are used to invoke a function with a specified context (the value of this) and arguments. They are similar but differ in how they accept arguments.
 
-    call() Method:
-    The call() method calls a function with a given this value and arguments provided individually.
-    const person = {
-    fullName: function(city, country) {
-        return this.firstName + ' ' + this.lastName + ', ' + city + ', ' + country;
-    }
-    };
+//     call() Method:
+//     The call() method calls a function with a given this value and arguments provided individually.
+//     const person = {
+//     fullName: function(city, country) {
+//         return this.firstName + ' ' + this.lastName + ', ' + city + ', ' + country;
+//     }
+//     };
 
-    const person1 = {
-    firstName: 'John',
-    lastName: 'Doe'
-    };
+//     const person1 = {
+//     firstName: 'John',
+//     lastName: 'Doe'
+//     };
 
-    const person2 = {
-    firstName: 'Jane',
-    lastName: 'Doe'
-    };
+//     const person2 = {
+//     firstName: 'Jane',
+//     lastName: 'Doe'
+//     };
 
-    console.log(person.fullName.call(person1, 'New York', 'USA')); // Output: John Doe, New York, USA
-    console.log(person.fullName.call(person2, 'London', 'UK')); // Output: Jane Doe, London, UK
-    In the example above:
-    We have a person object with a fullName method.
-    The call() method is used to invoke the fullName method with different contexts (person1 and person2) and arguments (city and country).
+//     console.log(person.fullName.call(person1, 'New York', 'USA')); // Output: John Doe, New York, USA
+//     console.log(person.fullName.call(person2, 'London', 'UK')); // Output: Jane Doe, London, UK
+//     In the example above:
+//     We have a person object with a fullName method.
+//     The call() method is used to invoke the fullName method with different contexts (person1 and person2) and arguments (city and country).
 
-    apply() Method:
-    The apply() method is similar to call(), but it accepts arguments as an array.
-    const person = {
-    fullName: function(city, country) {
-        return this.firstName + ' ' + this.lastName + ', ' + city + ', ' + country;
-    }
-    };
+//     apply() Method:
+//     The apply() method is similar to call(), but it accepts arguments as an array.
+//     const person = {
+//     fullName: function(city, country) {
+//         return this.firstName + ' ' + this.lastName + ', ' + city + ', ' + country;
+//     }
+//     };
 
-    const person1 = {
-    firstName: 'John',
-    lastName: 'Doe'
-    };
+//     const person1 = {
+//     firstName: 'John',
+//     lastName: 'Doe'
+//     };
 
-    const person2 = {
-    firstName: 'Jane',
-    lastName: 'Doe'
-    };
+//     const person2 = {
+//     firstName: 'Jane',
+//     lastName: 'Doe'
+//     };
 
-    console.log(person.fullName.apply(person1, ['New York', 'USA'])); // Output: John Doe, New York, USA
-    console.log(person.fullName.apply(person2, ['London', 'UK'])); // Output: Jane Doe, London, UK
+//     console.log(person.fullName.apply(person1, ['New York', 'USA'])); // Output: John Doe, New York, USA
+//     console.log(person.fullName.apply(person2, ['London', 'UK'])); // Output: Jane Doe, London, UK
 
 
-    Real-Time Scenario:
-    A common real-time scenario for using call() and apply() methods is in the context of inheritance and method borrowing.
-    Consider a scenario where you have a base object with a method, and you want to reuse that method in another object:
-    const baseObject = {
-    greet: function() {
-        return 'Hello, ' + this.name;
-    }
-}   ;
+//     Real-Time Scenario:
+//     A common real-time scenario for using call() and apply() methods is in the context of inheritance and method borrowing.
+//     Consider a scenario where you have a base object with a method, and you want to reuse that method in another object:
+//     const baseObject = {
+//     greet: function() {
+//         return 'Hello, ' + this.name;
+//     }
+// }   ;
 
-    const person1 = {
-    name: 'John'
-    };
+//     const person1 = {
+//     name: 'John'
+//     };
 
-    const person2 = {
-    name: 'Jane'
-    };
+//     const person2 = {
+//     name: 'Jane'
+//     };
 
-    // Using call to borrow the method from baseObject
-    console.log(baseObject.greet.call(person1)); // Output: Hello, John
-    console.log(baseObject.greet.call(person2)); // Output: Hello, Jane
+//     // Using call to borrow the method from baseObject
+//     console.log(baseObject.greet.call(person1)); // Output: Hello, John
+//     console.log(baseObject.greet.call(person2)); // Output: Hello, Jane
 
-*/
+// */
 const lufthansa = {
   airline: 'Lufthansa',
   iataCode: 'LH',
@@ -481,5 +481,90 @@ const flightData = [583, 'George Cooper'];
 book.apply(swiss,flightData);
 console.log(swiss);
 
+
+// ////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////
+//Bind Methods
+
+/*
+    In JavaScript, the bind() method is used to create a new function with a specified this value, and optionally, initial arguments. It's particularly useful when you want to set a specific context for a function that will be invoked later.
+
+    const person = {
+    firstName: 'John',
+    lastName: 'Doe',
+    fullName: function() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+    };
+
+    const printFullName = person.fullName; // Assigning the method to a variable
+    const boundPrintFullName = printFullName.bind(person); // Binding the 'this' value to 'person'
+    console.log(boundPrintFullName()); // Output: John Doe
+    In this example:
+    We have an object person with properties firstName, lastName, and a method fullName.
+    When we assign person.fullName to printFullName, printFullName loses its context (this), so calling printFullName() would return undefined undefined.
+    By using bind(person) on printFullName, we bind the this context to the person object, creating a new function boundPrintFullName.
+    Now, when we call boundPrintFullName(), it returns the expected result with the correct context.
+
+    Real-Time Scenario:
+    Consider a scenario where you want to add event listeners to HTML elements and handle events with methods defined in a JavaScript object.
+    const button = document.getElementById('myButton');
+    const handler = {
+        message: 'Button clicked!',
+        handleClick: function(event) {
+            console.log(this.message);
+        }
+    };
+    button.addEventListener('click', handler.handleClick.bind(handler));
+    In this scenario:
+    We have an object handler with a method handleClick that logs a message.
+    We bind handler to the handleClick method using bind(handler).
+    When the button is clicked, the handleClick method is invoked with the correct context (handler), and it logs the message defined in the object.
+
+
+*/
+const bookEw = book.bind(eurowings);
+const bookSw = book.bind(swiss);
+const bookLH = book.bind(lufthansa);
+bookEw(23, 'Steven Williams');
+console.log(eurowings);
+
+const bookEW23 = book.bind(eurowings,23);
+bookEW23('Steven sharper');
+console.log(eurowings);
+
+const bookEW23Suraj = book.bind(eurowings,23,'Suraj');
+bookEW23Suraj();
+console.log(eurowings);
+
+//With Event Listeners
+lufthansa.planes = 300;
+lufthansa.buyPlane = function(){
+    console.log(this);
+    this.planes++;
+    console.log(this.planes);
+};
+
+document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+
+// Partial application
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));
+
+const addVAT = addTax.bind(null, 0.23);
+// addVAT = value => value + value * 0.23;
+
+console.log(addVAT(100));
+console.log(addVAT(23));
+const addTaxRate = function (rate) {
+  return function (value) {
+    return value + value * rate;
+  };
+};
+const addVAT2 = addTaxRate(0.23);
+console.log(addVAT2(100));
+console.log(addVAT2(23));
 
 ////////////////////////////////////////////////
