@@ -216,88 +216,150 @@
 
 // ////////////////////////////////////////////////////////////////
 
-////////////////////////////////
-//Functions Accepting Callbacks Functions
+// ////////////////////////////////
+// //Functions Accepting Callbacks Functions
+
+// /*
+// In JavaScript, a callback function is a function that is passed as an argument to another function and is invoked after some operation is completed. Callback functions are a fundamental concept in asynchronous programming, allowing you to handle tasks that take time to complete without blocking the execution of other code.
+
+// // Example of a function with a callback
+// function doSomethingAsync(callback) {
+//     setTimeout(function() {
+//         console.log("Async operation done.");
+//         callback();
+//     }, 2000); // Simulating an asynchronous operation that takes 2 seconds
+// }
+
+// // Callback function
+// function callbackFunction() {
+//     console.log("Callback function executed.");
+// }
+
+// // Invoking the function with the callback
+// doSomethingAsync(callbackFunction);
+
+// In the example above:
+// doSomethingAsync is a function that performs an asynchronous operation (here, simulated with setTimeout).
+// It takes a callback function callback as an argument.
+// After the asynchronous operation is complete, it invokes the callback function.
+
+// Real-Time Scenario:
+// Consider a scenario where you need to fetch data from a server and perform some operation on that data once it's retrieved.
+// // Simulated function to fetch data from a server
+// function fetchDataFromServer(callback) {
+//     setTimeout(function() {
+//         const data = { id: 1, name: "John Doe", age: 30 };
+//         callback(data);
+//     }, 2000); // Simulating fetching data from a server
+// }
+
+// // Callback function to process the fetched data
+// function processData(data) {
+//     console.log("Data received:", data);
+//     console.log("Processing data...");
+//     // Perform some operation on the data
+// }
+
+// // Fetch data from server and process it using callback
+// fetchDataFromServer(processData);
+
+// In this scenario:
+
+// fetchDataFromServer is a function that mimics fetching data from a server asynchronously.
+// It takes a callback function callback as an argument.
+// After the data is fetched, it invokes the callback function with the fetched data.
+// processData is the callback function that processes the fetched data once it's received.
+
+// Callback functions are extensively used in JavaScript for handling asynchronous operations such as AJAX requests, file I/O, event handling, and more. They allow for non-blocking execution and enable better handling of asynchronous tasks in JavaScript applications.
+// */
+
+// const oneWord = function (str) {
+//   return str.replace(/ /g, '').toLowerCase();
+// };
+
+// const upperFirstWord = function (str) {
+//   const [firstWord, ...otherWords] = str.split(' ');
+//   return [firstWord.toUpperCase(), ...otherWords].join(' ');
+// };
+
+// //Higher-order functions
+// const transformer = function (str, fn) {
+//   console.log(`Original String: ${str}`);
+//   console.log(`Transformed String: ${fn(str)}`);
+//   console.log(`Transformed By: ${fn.name}`);
+// };
+
+// transformer('JavaScript is the best!', upperFirstWord);
+// transformer('JavaScript is the best!', oneWord);
+
+// const high5 = function () {
+//   console.log('👋');
+// };
+
+// document.body.addEventListener('click', high5);
+
+// [2, 4, 7].forEach(high5);
+
+// ////////////////////////////////////////////////////////////////
+//Functions Returning Functions
 
 /*
-In JavaScript, a callback function is a function that is passed as an argument to another function and is invoked after some operation is completed. Callback functions are a fundamental concept in asynchronous programming, allowing you to handle tasks that take time to complete without blocking the execution of other code.
+    In JavaScript, functions can return not only traditional data types like numbers or strings but also other functions. When a function returns another function, it's known as a function returning a function, and it enables powerful techniques such as closures and higher-order functions.
+    function greetMaker(greeting) {
+    return function(name) {
+        console.log(`${greeting}, ${name}!`);
+    };
+    }
 
-// Example of a function with a callback
-function doSomethingAsync(callback) {
-    setTimeout(function() {
-        console.log("Async operation done.");
-        callback();
-    }, 2000); // Simulating an asynchronous operation that takes 2 seconds
-}
+    const greetHello = greetMaker('Hello');
+    const greetGoodbye = greetMaker('Goodbye');
 
-// Callback function
-function callbackFunction() {
-    console.log("Callback function executed.");
-}
-
-// Invoking the function with the callback
-doSomethingAsync(callbackFunction);
-
-In the example above:
-doSomethingAsync is a function that performs an asynchronous operation (here, simulated with setTimeout).
-It takes a callback function callback as an argument.
-After the asynchronous operation is complete, it invokes the callback function.
+    greetHello('John'); // Output: Hello, John!
+    greetGoodbye('Jane'); // Output: Goodbye, Jane!
+    In this example:
+    The greetMaker function takes a greeting parameter and returns another function.
+    The returned function takes a name parameter and logs the greeting along with the name.
+    greetHello and greetGoodbye are functions returned by greetMaker, each initialized with a different greeting.
 
 
-Real-Time Scenario:
-Consider a scenario where you need to fetch data from a server and perform some operation on that data once it's retrieved.
-// Simulated function to fetch data from a server
-function fetchDataFromServer(callback) {
-    setTimeout(function() {
-        const data = { id: 1, name: "John Doe", age: 30 };
-        callback(data);
-    }, 2000); // Simulating fetching data from a server
-}
+    Real-Time Scenario:
+    Consider a scenario where you want to create various discount calculators based on different conditions, such as membership status, purchase history, or seasonal promotions.
+    function discountCalculator(discountPercentage) {
+    return function(amount) {
+        const discountAmount = (amount * discountPercentage) / 100;
+        return amount - discountAmount;
+    };
+    }
 
-// Callback function to process the fetched data
-function processData(data) {
-    console.log("Data received:", data);
-    console.log("Processing data...");
-    // Perform some operation on the data
-}
+    const regularCustomerDiscount = discountCalculator(10);
+    const premiumCustomerDiscount = discountCalculator(20);
 
-// Fetch data from server and process it using callback
-fetchDataFromServer(processData);
+    const regularBillAmount = regularCustomerDiscount(100); // Regular customer gets 10% off
+    console.log("Regular Bill Amount:", regularBillAmount);
 
-In this scenario:
+    const premiumBillAmount = premiumCustomerDiscount(100); // Premium customer gets 20% off
+    console.log("Premium Bill Amount:", premiumBillAmount);
 
-fetchDataFromServer is a function that mimics fetching data from a server asynchronously.
-It takes a callback function callback as an argument.
-After the data is fetched, it invokes the callback function with the fetched data.
-processData is the callback function that processes the fetched data once it's received.
-
-
-Callback functions are extensively used in JavaScript for handling asynchronous operations such as AJAX requests, file I/O, event handling, and more. They allow for non-blocking execution and enable better handling of asynchronous tasks in JavaScript applications.
+    In this scenario:
+    The discountCalculator function returns a function that calculates the discounted amount based on the provided discount percentage.
+    regularCustomerDiscount and premiumCustomerDiscount are functions returned by discountCalculator, each with a different discount percentage.
+    You can then use these functions to calculate the discounted bill amount for regular and premium customers.
 */
 
-const oneWord = function (str) {
-  return str.replace(/ /g, '').toLowerCase();
+const greet = function (greetings) {
+  return function (name) {
+    console.log(`${greetings} ${name}`);
+  };
 };
 
-const upperFirstWord = function (str) {
-  const [firstWord, ...otherWords] = str.split(' ');
-  return [firstWord.toUpperCase(), ...otherWords].join(' ');
-};
+const greetHey = greet('Hey');
+greetHey('Suraj');
+greetHey('Priyanka');
+greetHey('Yash');
 
-//Higher-order functions
-const transformer = function (str, fn) {
-  console.log(`Original String: ${str}`);
-  console.log(`Transformed String: ${fn(str)}`);
-  console.log(`Transformed By: ${fn.name}`);
-};
+greet('Hello')('Suraj');
 
-transformer('JavaScript is the best!', upperFirstWord);
-transformer('JavaScript is the best!', oneWord);
-
-const high5 = function () {
-  console.log('👋');
-};
-
-document.body.addEventListener('click', high5);
-
-[2, 4, 7].forEach(high5);
+//Challenge
+const greetArr = greetingss => name => console.log(`${greetingss} ${name}`);
+greetArr('Hello')('Suraj');
+// ////////////////////////////////////////////////////////////////
